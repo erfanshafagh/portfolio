@@ -1,0 +1,426 @@
+/* General Styles */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Akaya+Telivigala&family=Lora:ital,wght@0,400..700;1,400..700&family=Parisienne&family=Protest+Revolution&family=Rubik+Doodle+Shadow&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    background-color: #131313;
+}
+
+body {
+    font-family: "Akaya Telivigala", system-ui;
+    font-weight: 400;
+    font-style: normal;    
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+p {
+    color: #fafafa;
+}
+
+a, .btn {
+    transition: all 500ms ease;
+}
+
+
+/*  NAV MENU  */
+
+
+nav, .nav-links {
+    display: flex;
+}
+
+nav {
+    justify-content: space-around;
+    align-items: center;
+    height: 17vh;
+}
+
+.nav-links{
+    gap: 2rem;
+    list-style: none;
+    font-size: 2rem;
+}
+
+a{
+    color: #ffcb9a;
+    text-decoration: none;
+}
+
+a:hover{
+    color: #fafafa;
+    text-decoration: underline;
+    text-decoration-color: #fafafa;
+    text-underline-offset: 0.6rem;
+}
+
+.logo{
+    font-family: 'Rubik Doodle Shadow';
+    color: #ffcb9a;
+}
+
+.logo:hover,
+.thelogo:hover {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+/*  HAMBURGER MENU  */
+
+
+#hamburger-nav {
+    display: none;
+}
+
+.hamburger-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.hamburger-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 24px;
+    width: 30px;
+    cursor: pointer;
+}
+
+.logo{
+    font-size: 1.5rem;
+}
+
+.hamburger-icon span {
+    width: 100%;
+    height: 2px;
+    background-color: #ffcb9a;
+    transition: all 0.3 ease-in-out;
+}
+
+.menu-links {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: fit-content;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3 ease-in-out;
+}
+
+.menu-links a {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #ffcb9a;
+    text-decoration: none;
+    transition: all 0.3 ease-in-out;
+}
+
+.menu-links li {
+    list-style: none;
+}
+
+.menu-links.open {
+    max-height: 300px;
+}
+
+.hamburger-icon span:first-child {
+    transform: none;
+    opacity: 1;
+}
+
+.hamburger-icon.open span:first-child {
+    transform: rotate(45deg) translate(10px, 5px);
+}
+
+.hamburger-icon.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-icon.open span:last-child {
+    transform: rotate(-45deg) translate(10px, -5px);
+}
+
+
+/*  PROFILE SECTIONS  */
+
+
+section {
+    padding-top: 5vh;
+    height: 96vh;
+    margin: 0 10rem;
+    box-sizing: border-box;
+    min-height: fit-content;
+}
+.section-edu{
+    padding-top: 4vh;
+    height: 70vh;
+    margin: 0 10rem;
+    box-sizing: border-box;
+    min-height: fit-content;
+}
+.section-exp{
+    padding-top: 15vh;
+    height: 96vh;
+    margin: 0 10rem;
+    box-sizing: border-box;
+    min-height: fit-content;
+}
+
+
+.section-container {
+    display: flex;
+}
+
+#profile {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    height: 80vh;
+}
+
+.section__pic-container {
+    display: flex;
+    height: 400px;
+    width: 400px;
+    margin: auto 0;
+}
+
+.section__text {
+    align-self: center;
+    text-align: center;
+}
+
+.section__text p {
+    font-weight: 600;
+}
+
+.section__text__p1 {
+    text-align: center;
+    font-size: 1.75rem;
+}
+
+.section__text__p2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.title {
+    font-size: 3rem;
+    text-align: center;
+    color: #fafafa;
+}
+
+#socials-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+    gap: 2rem;
+}
+
+.icon {
+    cursor: pointer;
+    height: 3rem;
+    width: 3rem;
+    background: transparent;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.btn {
+    font-family: 'Akaya Telivigala';
+    font-size: medium;
+    font-weight: 600;
+    font-style: normal; 
+    transition: all 500ms ease;
+    padding: 1rem;
+    width: 7rem;
+    border-radius: 1.5rem;
+}
+
+.btn-color-1:hover, .btn-color-2:hover {
+    cursor: pointer;
+}
+
+.btn-color-1{
+    border: #ffcb9a 0.2rem solid;
+    background: #292929;
+    color: #fafafa;
+}
+
+.btn-color-1:hover{
+    background: black;
+    border: #ffcb9a 0.2rem solid;
+    color: #ffcb9a;
+}
+
+.CM{
+    text-align: center;
+    font-size: 1.75rem;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+/* ABOUT, EXPERIENCE, EDUCATION SECTIONS */
+
+
+#about {
+    position: relative;
+}
+
+.about-containers {
+    gap: 1rem;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+.about-details-container {
+    justify-content: center;
+    flex-direction: column;
+}
+
+.about-containers,
+.about-details-container {
+    display: flex;
+}
+
+.details-container {
+    padding: 1.5rem;
+    flex: 1;
+    background: #424242;
+    border-radius: 1.5rem;
+    border: #ffcb9a 0.2rem solid;
+    text-align: center;
+    
+}
+
+.p-ditails{
+    background-color: #424242;
+    font-size: 20px;
+}
+
+.article-container {
+    display: flex;
+    text-align: initial;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 2.5rem;
+    justify-content: space-around;
+    background-color: #424242;
+    margin-top: 2rem;
+}
+
+.article-container p, 
+.article-container h3,
+.article-container article,
+.article-container div{
+    background-color: #424242;
+    font-size: 20px;
+}
+
+
+/* PROJECTS SECTION */
+
+
+#projects {
+    position: relative;
+}
+
+.color-container {
+    border-color: #424242;
+    background: #424242;
+    border-radius: 1.5rem;
+    border: #ffcb9a 0.2rem solid;
+}
+
+.project-img{
+    border-radius: 1rem;
+    width: 100%;
+    height: 100%;
+}
+
+.project-title {
+    margin: 1rem;
+    color: black;
+    background-color: #424242;
+}
+
+.project-btn {
+    border: #ffcb9a 0.2rem solid;
+    background: #292929;
+    color: #fafafa;
+    font-family: 'Akaya Telivigala';
+    font-size: medium;
+    font-weight: 600;
+    font-style: normal; 
+    transition: all 500ms ease;
+    padding: 1rem;
+    width: 7rem;
+    border-radius: 1.5rem;
+}
+
+.project-btn:hover {
+    cursor: pointer;
+    background: black;
+    border: #ffcb9a 0.2rem solid;
+    color: #ffcb9a;
+}
+
+.project h2,
+.project p,
+.project div ,
+.btn-container-p {
+    background: #424242;
+    font-size: 20px;
+}
+
+.text-container-p,
+.text-container-p p {
+    background: #424242;
+    font-size: 20px;
+
+}
+
+.text-container-p {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+
+/* FOOTER SECTION */
+
+
+footer {
+    margin-top: 5rem;
+    margin-bottom: 0.5rem;
+}
+
+footer p {
+    text-align: center;
+    color: #2d2d2d;
+    padding-left: 10px;
+}
+
+.icon-arrow{
+    cursor: pointer;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    height: 3rem;
+    width: 3rem;
+    background: transparent;
+    display: none;
+}
+
