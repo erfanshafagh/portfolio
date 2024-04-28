@@ -155,6 +155,7 @@ a:hover{
 
 section {
     padding-top: 5vh;
+    padding-bottom: 5vh;
     height: 96vh;
     margin: 0 10rem;
     box-sizing: border-box;
@@ -277,8 +278,9 @@ section {
 /* ABOUT, EXPERIENCE, EDUCATION SECTIONS */
 
 
-#about, #experience , #education {
+#about, #experience , #education, #projects {
     position: relative;
+    height: fit-content;
 }
 
 .about-containers {
