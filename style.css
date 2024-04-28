@@ -160,6 +160,7 @@ section {
     box-sizing: border-box;
     min-height: fit-content;
 }
+/*
 .section-edu{
     padding-top: 4vh;
     height: 70vh;
@@ -174,7 +175,7 @@ section {
     box-sizing: border-box;
     min-height: fit-content;
 }
-
+*/
 
 .section-container {
     display: flex;
@@ -276,7 +277,7 @@ section {
 /* ABOUT, EXPERIENCE, EDUCATION SECTIONS */
 
 
-#about {
+#about, #experience , #education {
     position: relative;
 }
 

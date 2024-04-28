@@ -18,9 +18,10 @@
     #hamburger-nav {
         display: flex;
     }
+    /*
     #experience, .experience-details-container {
         margin-top: 2rem;
-    }
+    }*/
     #profile, .section-container {
         display: block;
     }
@@ -44,7 +45,7 @@
 }
 
 @media screen and (max-width: 600px) {
-    #contact, footer {
+    #contact {
         height: 40vh;
     }
     #profile {
@@ -54,11 +55,10 @@
     article {
         font-size: 1rem;
     }
-    footer nav {
-        height: fit-content;
-        margin-bottom: 2rem;
-    }
+    
     .about-containers,
+    .details-container,
+    .about-details-container,
     .contact-info-upper-container,
     .btn-container {
         flex-wrap: wrap;
@@ -85,6 +85,9 @@
         width: auto;
         height: 46vw;
         justify-content: center;
+    }
+    .about-details-container{
+        width: auto;
     }
     .section__text__p2 {
         font-size: 1.25rem;
