@@ -89,6 +89,12 @@
     .about-details-container{
         width: auto;
     }
+    .about-containers{
+        flex-direction: column;
+    }
+    .article-container {
+        flex-direction: column
+    }
     .section__text__p2 {
         font-size: 1.25rem;
     }

@@ -1,8 +1,6 @@
-/* General Styles */
-
+/********* General Styles *********/
 
 @import url('https://fonts.googleapis.com/css2?family=Akaya+Telivigala&family=Lora:ital,wght@0,400..700;1,400..700&family=Parisienne&family=Protest+Revolution&family=Rubik+Doodle+Shadow&display=swap');
-
 
 * {
     margin: 0;
@@ -29,20 +27,17 @@ a, .btn {
 }
 
 
-/*  NAV MENU  */
+/*********  Nav Menu  *********/
 
-
-nav, .nav-links {
-    display: flex;
-}
-
-nav {
+#desktop-nav, #hamburger-nav {
     justify-content: space-around;
+    display: flex;
     align-items: center;
     height: 17vh;
 }
 
 .nav-links{
+    display: flex;
     gap: 2rem;
     list-style: none;
     font-size: 2rem;
@@ -72,8 +67,7 @@ a:hover{
 }
 
 
-/*  HAMBURGER MENU  */
-
+/*********  Hamburger Menu  *********/
 
 #hamburger-nav {
     display: none;
@@ -124,6 +118,13 @@ a:hover{
     transition: all 0.3 ease-in-out;
 }
 
+.menu-links a:hover{
+    color: #fafafa;
+    text-decoration: underline;
+    text-decoration-color: #fafafa;
+    text-underline-offset: 0.6rem;
+}
+
 .menu-links li {
     list-style: none;
 }
@@ -150,8 +151,7 @@ a:hover{
 }
 
 
-/*  PROFILE SECTIONS  */
-
+/*********  Profile Section  *********/
 
 section {
     padding-top: 5vh;
@@ -161,22 +161,6 @@ section {
     box-sizing: border-box;
     min-height: fit-content;
 }
-/*
-.section-edu{
-    padding-top: 4vh;
-    height: 70vh;
-    margin: 0 10rem;
-    box-sizing: border-box;
-    min-height: fit-content;
-}
-.section-exp{
-    padding-top: 15vh;
-    height: 96vh;
-    margin: 0 10rem;
-    box-sizing: border-box;
-    min-height: fit-content;
-}
-*/
 
 .section-container {
     display: flex;
@@ -205,13 +189,8 @@ section {
     font-weight: 600;
 }
 
-.section__text__p1 {
-    text-align: center;
-    font-size: 1.75rem;
-}
-
-.section__text__p2 {
-    font-size: 1.75rem;
+.section__text__p {
+    font-size: 1.6rem;
     margin-bottom: 1rem;
 }
 
@@ -219,6 +198,8 @@ section {
     font-size: 3rem;
     text-align: center;
     color: #fafafa;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
 }
 
 #socials-container {
@@ -275,8 +256,12 @@ section {
     margin-bottom: 0px;
 }
 
-/* ABOUT, EXPERIENCE, EDUCATION SECTIONS */
+.text-container {
+    margin-top: 2rem;
+}
 
+
+/********* ABOUT, EXPERIENCE, EDUCATION SECTIONS *********/
 
 #about, #experience , #education, #projects {
     position: relative;
@@ -332,7 +317,9 @@ section {
     background-color: #424242;
     font-size: 20px;
 }
-
+.article-container h3 {
+    color: #ffcb9a;
+}
 
 /* PROJECTS SECTION */
 
