@@ -1,291 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./media.css">
     <title>Erfan Shafagh Portfolio</title>
+    <link rel="icon" href="./assets/profilePic.PNG" type="image/x-icon">
+    <link rel="stylesheet" href="./style.css">
 </head>
-
 <body>
 
-    <!-- Desktop Navigation -->
-    <nav id="desktop-nav">
-        <a class="thelogo" href="https://erfanshafagh.github.io/portfolio/">
-            <p class="logo">Erfan Shafagh Portfolio</p>
-        </a>
-        <div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#education">Education</a></li>
-            </ul>
-        </div>
-    </nav>
+    <div class="container">
 
-    <!-- Hamburger Navigation -->
-    <nav id="hamburger-nav">
-        <a class="thelogo" href="https://erfanshafagh.github.io/portfolio/">
-            <p class="logo">Erfan Shafagh</p>
-        </a>
-        <div class="hamburger-menu">
-            <div class="hamburger-icon" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
+        <!-- Header Section -->
+        <div class="intro">
+            <div id="introPic">
+                <img src="./assets/profilePic.PNG"/>
             </div>
-            <div class="menu-links">
-                <li><a href="#about" onclick="toggleMenu()">About</a></li>
-                <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-                <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-                <li><a href="#education" onclick="toggleMenu()">Education</a></li>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Profile Section -->
-    <section id="profile">
-        <div class="section__pic-container">
-            <img src="./assets/profilePic.PNG" alt="Erfan Shafagh Picture">
-        </div>
-        <div class="section__text">
-            <p class="section__text__p">Hello, I am</p>
-            <h1 class="title">Erfan Shafagh</h1>
-            <p class="section__text__p">Data Scientist</p>
-            <div class="btn-container">
-                <button class="btn btn-color-1" onclick="window.open('./assets/Erfan.Shafagh.Resume.pdf')">
-                    Download Resume
-                </button>
-            </div>
-            <div><p class="CM"> Contact Me :</p></div>
-            <div id="socials-container">
-                <img src="./assets/linkedin.png" alt="My LinkedIn" class="icon" onclick="window.open('https://linkedin.com/in/erfan-shafagh-6707a030a', '_blank')">
-                <img src="./assets/github.png" alt="My GitHub" class="icon" onclick="window.open('https://github.com/erfanshafagh', '_blank')">
-                <img src="./assets/email.png" alt="My Email" class="icon" onclick="window.location.href='mailto:erfan.shafagh@yahoo.com'">
-            </div>
-        </div>
-    </section>
-
-    <!-- About Me Section -->
-    <section id="about">
-        <h1 class="title">ABOUT ME</h1>
-        <div class="details-container">
-            <img src="./assets/skills.png" alt="Skills icon" class="icon"/>
-            <h3 class="p-ditails">Skills</h3>
-            <p class="p-ditails">
-                <div class="article-container">
-                    <h3>Programming Languages:<p>Python, C++, C, Matlab, Bash, HTML, CSS</p></h3>
-                    <h3>Database: <p>SQL, SQLite</p></h3>
-                    <h3>Version Control: <p>Git, GitHub </p></h3>
-                    <h3>Operating Systems: <p>Linux, Unix, Windows</p></h3>
-                    <h3>Data Science: <p>NumPy, Pandas, Matplotlib, <br> Machine Learning Algorithms, PyTorch</p></h3>
-                    <h3>Software: <p>Jupyter Notebook, PyCharm, Google Colab, <br>  MS Office, Visual Studio, Docker, GDB, Valgrind</p></h3>
-                    <h3>Technical: <p>Data Structures and Algorithms, Debugging, <br> Problem Solving, Object-Oriented Programming</p></h3>
-                    <h3>Personal Qualities: <p>Detail-oriented, Creative,<br> Quick learner, Hardworking</p></h3>
-                    <h3>Soft Skills: <p>Teamwork, Energetic, Strong communication skills,<br> Reliable and responsible</p></h3>
-                    <h3>Language: <p>Native in Persian</p></h3>
+            <div id="introName">
+                <h1>Erfan Shafagh</h1>
+                <h2>Data Scientist</h2>
+                <div class="socials">
+                    <a href="mailto:erfan.shafagh@yahoo.com" target="_blank">
+                        <img src="./assets/email.png" alt="Email">
+                    </a>
+                    <a href="https://github.com/erfanshafagh" target="_blank">
+                        <img src="./assets/github.png" alt="GitHub">
+                    </a>
+                    <a href="https://linkedin.com/in/erfan-shafagh" target='_blank'>
+                        <img src="./assets/linkedin.png" alt="Lonkedin">
+                    </a>
+                    <a href="./assets/Erfan.Shafagh.Resume.pdf" target="_blank">
+                        <img src="./assets/resume.png" alt="Resume">
+                    </a>
                 </div>
-            </p>
+            </div>
         </div>
-    <div class="text-container">
-        <p>
-            A skilled and detail-oriented Computer Science student with expertise in Python, C++, and SQL. Proficient in data
-            structures, algorithms, and problem-solving, with a strong track record in team projects. Experienced in machine learning
-            and data science, including supervised and unsupervised learning, and neural networks. Knowledgeable in Python
-            libraries like NumPy, Pandas, and PyTorch. Adaptable and excellent in communication, committed to innovative solutions.
-        </p>
+
+        <!-- Info Section -->
+        <div class="tags">
+            <span class="tag">
+                <strong>Hi, Welcome to my website! Here is some brief information about me:</strong><br>I am a skilled and detail-oriented Computer Science student with expertise in Python, C++, C, and Java, and a strong background in machine learning, reinforcement learning, and robotics. Proficient in Python libraries like NumPy, Pandas, Matplotlib, PyTorch, and Scikit-learn, with hands-on experience developing machine learning models and implementing RL algorithms for complex problem-solving and decision-making tasks. Experienced in robotics projects involving control systems, path planning, and simulation environments. Adept at working with databases such as PostgreSQL and SQLite, and version control using Git and GitHub. Proficient in tools like MATLAB, Jupyter Notebook, and Google Colab, with a strong grasp of data structures, algorithms, problem-solving, debugging, object-oriented programming, and Agile methodology. Known for effective teamwork, clear communication, and reliability in delivering innovative, high-quality solutions.
+            </span>
+        </div>
+
+        <hr>
+
+        <!-- Skills Section -->
+        <div class="skills">
+            <h2>Skills</h2>
+            <div class="badges">
+                <span class="badge badge-purple">Python</span>
+                <span class="badge badge-green">ML</span>
+                <span class="badge badge-orange">RL</span>
+                <span class="badge badge-red">Robotics</span>
+                <span class="badge badge-blue">Git</span>
+                <span class="badge badge-teal">GitHub</span>
+                <span class="badge badge-yellow">SQL</span>
+                <span class="badge badge-brown">PyTorch</span>
+                <span class="badge badge-pink">C++</span>
+                <span class="badge badge-cyan">Matlab</span>
+                <span class="badge badge-indigo">DSA</span>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Projects Section -->
+        <div class="projects">
+            <h2>Projects</h2>
+            <div id="project-list" class="project-list"></div>
+            <button id="show-more-btn" class="show-more-btn">Show More</button>
+        </div>
+
+        <hr>
+
+        <!-- Education Section -->
+        <div class="projects">
+            <h2>Education</h2>
+            <div id="project-list" class="project-list">
+                <div class="project-card">
+                    <img src="./assets/sfu-logo.png" alt="SFU Logo">
+                    <h3>Bachelor of Computer Science</h3>
+                    <p>Simon Fraser University</p>
+                    <p>2023 – Present</p>
+                    <p>BC, CANADA</p>
+                </div>
+                <div class="project-card" style="align-content: center;">
+                    <h3>High School Diploma</h3>
+                    <p>Salam High School</p>
+                    <p>2013 – 2017</p>
+                    <p>Tehran, IRAN</p>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Experience Section -->
+        <div class="projects">
+            <h2>Experience</h2>
+            <div id="project-list" class="project-list">
+                <div class="project-card">
+                    <h3>Python Tutor</h3>
+                    <p>Volunteer</p>
+                    <p>2023</p> 
+                    <p>BC, CANADA </p>
+                </div>
+                <div class="project-card">
+                    <h3>Mathematics Teacher</h3>
+                    <p>Freelance</p>
+                    <p>2020 – 2022</p> 
+                    <p>Tehran, IRAN</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll to Top Arrow -->
+        <img src="./assets/arrow.png" alt="Arrow icon" class="icon-arrow" id="arrowIcon" onclick="scrollToTop()"/>
+
     </div>
-
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects">
-        <h1 class="title">MY PROJECTS</h1>
-        <div class="experience-details-container">
-            <div class="about-containers">
-                <div class="details-container color-container">
-                    <div class="article-container">
-                        <img src="./assets/MovieTitleGenerator.jpg" alt="Movie Title Generator Project" class="project-img"/>
-                    </div>
-                    <h2 class="experience-sub-title project-title">Movie Title Generator Project</h2>
-                    <div class="text-container-p">
-                        <p>
-                            This project is about generating movie titles using a Multilayer Perceptron (MLP) neural network built with PyTorch.
-                        </p>
-                    </div>
-                    <div class="btn-container-p">
-                        <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/erfanshafagh/MovieTitleGenerator', '_blank')">
-                            Github
-                        </button>
-                    </div>
-                </div>
-                <div class="details-container color-container">
-                    <div class="article-container">
-                        <img src="./assets/db-diagram.png" alt="Database Project" class="project-img"/>
-                    </div>
-                    <h2 class="experience-sub-title project-title">Database Management</h2>
-                    <div class="text-container-p">
-                        <p>
-                            This project implements a database schema and functionalities for managing research grant 
-                            competitions, applications, reviewers, and related entities. It includes functionalities 
-                            to perform tasks such as querying competitions, assigning reviewers, and retrieving information about proposals. 
-                            This project involves creating and managing a database for a council that oversees research grant applications, 
-                            competitions, and reviewer assignments.
-                        </p>
-                    </div>
-                    <div class="btn-container-p">
-                        <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/erfanshafagh/dbDesign', '_blank')">
-                            Github
-                        </button>
-                    </div>
-                </div>
-                <div class="details-container color-container">
-                    <div class="article-container">
-                        <img src="./assets/spotifyIcon.jpg" alt="spotifyicon" class="project-img"/>
-                    </div>
-                    <h2 class="experience-sub-title project-title">Spotify API</h2>
-                    <div class="text-container-p">
-                        <p>
-                            This Python script processes audio files, extracts metadata, and updates a Spotify playlist based on the extracted information.
-                        </p>
-                    </div>
-                    <div class="btn-container-p">
-                        <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/erfanshafagh/SpotifyAPI', '_blank')">
-                            Github
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="experience-details-container">
-            <div class="about-containers">
-                <div class="details-container color-container">
-                    <div class="article-container">
-                        <img src="./assets/OS_simulation.jpg" alt="OS Simulation Project" class="project-img"/>
-                    </div>
-                    <h2 class="experience-sub-title project-title">OS Simulation Project</h2>
-                    <div class="text-container-p">
-                        <p>
-                            This project simulates the behavior of a simple operating system with various processes and commands.  
-                            It provides an interface for users to interact with the simulated operating system through a command-line interface.
-                        </p>
-                    </div>
-                    <div class="btn-container-p">
-                        <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/erfanshafagh/OS_Simulation', '_blank')">
-                            Github
-                        </button>
-                    </div>
-                </div>
-                <div class="details-container color-container">
-                    <div class="article-container">
-                        <img src="./assets/ds-diagram.png" alt="Data Structure Project" class="project-img"/>
-                    </div>
-                    <h2 class="experience-sub-title project-title">Bank Simulation</h2>
-                    <div class="text-container-p">
-                        <p>
-                            This project implements a bank simulation system in C++. It simulates a bank system with customer 
-                            arrivals and departures using priority queues, binary heap and queues to manage customers. The project uses dynamic 
-                            circular queues to represent the bank line, ensuring FIFO order and dynamically adjusting capacity as needed.
-                        </p>
-                    </div>
-                    <div class="btn-container-p">
-                        <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/erfanshafagh/bankSimulation', '_blank')">
-                            Github
-                        </button>
-                    </div>
-                </div>
-                <div class="details-container color-container">
-                    <div class="article-container">
-                        <img src="./assets/socket-diagram.jpg" alt="OS Socket Project" class="project-img"/>
-                    </div>
-                    <h2 class="experience-sub-title project-title">Socket Networking</h2>
-                    <div class="text-container-p">
-                        <p>
-                            This project (s-talk) is a command-line chat program that enables communication between two users over a network. It uses UDP 
-                            sockets for message transmission. The program is developed in C and consists of different modules for input handling, 
-                            message sending, message receiving, and overall socket management.
-                        </p>
-                    </div>
-                    <div class="btn-container-p">
-                        <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/erfanshafagh/s-talk', '_blank')">
-                            Github
-                        </button>
-                    </div>
-                </div>
-
-                <!-- more projects -->
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" >
-        <h1 class="title">MY EXPERIENCE</h1>
-        <div class="details-container">
-                <img src="./assets/experience.png" alt="Experience icon" class="icon"/>
-                <h3 class="p-ditails">Experience</h3>
-                <p class="p-ditails">
-                    <div class="article-container">
-                        <article>
-                            <div>
-                                <h3>Python Tutor</h3>
-                                <p> Volunteer <br> 2023 <br> BC, CANADA </p>
-                            </div>
-                        </article>
-                        <article>
-                            <div>
-                                <h3>Mathematics Teacher</h3>
-                                <p> Freelance <br> 2020 – 2022  <br> Tehran, IRAN</p>
-                            </div>
-                        </article>
-                    </div>
-                </p>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education" >
-        <h1 class="title">MY EDUCATION</h1>
-        <div class="about-details-container">
-            <div class="about-containers">
-                <div class="details-container">
-                    <img src="./assets/education.png" alt="Education icon" class="icon"/>
-                    <h3 class="p-ditails">Education</h3>
-                    <p class="p-ditails">
-                        <div class="article-container">
-                            <article>
-                                <div>
-                                    <h3>Bachelor of Computer Science</h3>
-                                    <p> Simon Fraser University <br> 2023 – Present <br> BC, CANADA </p>
-                                </div>
-                            </article>
-                            <article>
-                                <div>
-                                    <h3>High School Diploma and Pre-university Program in Mathematical Sciences</h3>
-                                    <p> Salam High School <br> 2013 – 2017  <br> Tehran, IRAN</p>
-                                </div>
-                            </article>
-                        </div>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Scroll to Top Arrow -->
-    <img src="./assets/arrow.png" alt="Arrow icon" class="icon-arrow" id="arrowIcon" onclick="scrollToTop()"/>
-
-    <!-- Footer Section -->
-    <footer>
-        <p>Copyright &#169; 2024 Erfan Shafagh. All Rights Reserved.</p>
-    </footer>
 
     <!-- Scripts -->
     <script src="./script.js"></script>
+
 </body>
 </html>
