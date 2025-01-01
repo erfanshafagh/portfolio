@@ -277,6 +277,10 @@ hr {
     justify-content: center;
     gap: 5px;
     }
+
+    .project-card {
+        box-shadow: 0 0 1px 1px var(--hover-color);
+    }
 }
 
 @media (max-width: 768px) {
@@ -299,6 +303,10 @@ hr {
 
     .tags {
         gap: 5px;
+    }
+
+    .project-card {
+        box-shadow: 0 0 1px 1px var(--hover-color);
     }
 }
 
@@ -323,5 +331,9 @@ hr {
     .tags {
         gap: 3px;
         font-size: 0.8rem;
+    }
+
+    .project-card {
+        box-shadow: 0 0 1px 1px var(--hover-color);
     }
 }

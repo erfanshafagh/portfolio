@@ -22,7 +22,7 @@ const projects = [
                 <span class="badge badge-teal">Backend</span>
             </div>
         `,
-        github: ''
+        github: 'https://rizzervit.onrender.com/home'
     },
     {
         img: "./assets/MovieTitleGenerator.jpg",
@@ -97,7 +97,7 @@ const projects = [
                 <span class="badge badge-green">CV</span>
             </div>
         `,
-        github: ""
+        github: "https://github.com/erfanshafagh/miniPhotoshop"
     },
     {
         img: "./assets/rasterization.png",
@@ -109,7 +109,7 @@ const projects = [
                 <span class="badge badge-pink">Graphics</span>
             </div>
         `,
-        github: ""
+        github: "https://github.com/erfanshafagh/Rasterization"
     },
     {
         img: "./assets/ds-diagram.png",
@@ -145,7 +145,15 @@ function renderProjects() {
             <p>${project.description}</p>
             ${project.badges}
         `;
-        if (project.github) {
+        if (project.github === 'https://rizzervit.onrender.com/home') {
+            const githubLink = document.createElement("a");
+            githubLink.href = project.github;
+            githubLink.target = "_blank";
+            githubLink.textContent = "Website";
+            githubLink.classList.add("github-link");
+            card.appendChild(githubLink);
+        }
+        else if (project.github) {
             const githubLink = document.createElement("a");
             githubLink.href = project.github;
             githubLink.target = "_blank";
