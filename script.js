@@ -1,636 +1,587 @@
-const projects = [
-    {
-        img: "./assets/initial-slam-map.png",
-        title: "Autonomous Cleaning Robot Path Planning",
-        description: "Designed and implemented a ROS2-based path planning system for TurtleBot3 using Monte Carlo Tree Search to autonomously clean rooms while avoiding static obstacles and optimizing coverage efficiency.",
-        badges: `
-            <div class="badges">
-                <span class="badge badge-red">Robotics</span>
-                <span class="badge badge-brown">ROS2</span>
-                <span class="badge badge-green">MCTS</span>
-            </div>
-        `,
-        tags: ['Robotics', 'ROS2', 'MCTS'],
-        github: 'https://github.com/SFU-MARS/ros2_tutorial/tree/cleaner_mcts'
-    },
-    // {
-    //     img: "./assets/fraud.png",
-    //     title: "Fraud Detection",
-    //     description: "A research project focused on detecting fraudulent activities in prescription datasets. Utilized advanced data preprocessing and unsupervised learning algorithms to identify anomalies and uncover patterns in complex datasets.",
-    //     badges: `
-    //         <div class="badges">
-    //             <span class="badge badge-green">Python</span>
-    //             <span class="badge badge-brown">ML</span>
-    //         </div>
-    //     `,
-    //     tags: ['Python', 'ML'],
-    //     github: ''
-    // },
-    {
-        img: "./assets/llm.png",
-        title: "AI Song Lyric Generation",
-        description: "Fine-tuned GPT-2 with parameter-efficient methods (Adapters, LoRA) to generate genre-specific song lyrics, evaluated using perplexity and human judgments.",
-        badges: `
-            <div class="badges">
-                <span class="badge badge-purple">Python</span>
-                <span class="badge badge-blue">NLP</span>
-                <span class="badge badge-green">LLM</span>
-            </div>
-        `,
-        tags: ['Python', 'NLP', 'LLM'],
-        github: 'https://drive.google.com/drive/folders/1X4j89rxxkbcUG9T9s3kRpvH9n0AcpH-o?usp=sharing'
-    },
-    {
-        img: "./assets/cinepass.png",
-        title: "Cinepass",
-        description: "Cinepass is a web application for managing movie listings, user registrations, and bookings for movies, concerts, and sports events. Users can browse events, book tickets, and view past orders, while admins can add new events. Built with Spring Boot, Thymeleaf, and a database for data persistence, it features user authentication and account management.",
-        badges: `
-            <div class="badges">
-                <span class="badge badge-orange">Java</span>
-                <span class="badge badge-red">PostgreSQL</span>
-                <span class="badge badge-teal">Backend</span>
-            </div>
-        `,
-        tags: ['Java', 'PostgreSQL', 'Backend'],
-        github: 'https://rizzervit.onrender.com/home'
-    },
-    {
-        img: "./assets/MovieTitleGenerator.jpg",
-        title: "Movie Title Generator",
-        description: "This project is about generating movie titles using a Multilayer Perceptron (MLP) neural network built with PyTorch.",
-        badges: `
-            <div class="badges">
-                <span class="badge badge-purple">Python</span>
-                <span class="badge badge-blue">MLP</span>
-            </div>
-        `,
-        tags: ['Python', 'MLP'],
-        github: 'https://github.com/erfanshafagh/MovieTitleGenerator'
-    },
-    {
-        img: "./assets/db-diagram.png",
-        title: "Database Management",
-        description: "This project implements a database schema and functionalities for managing research grant competitions and related entities. This project involves creating and managing a database for a council that oversees research grant applications, competitions, and reviewer assignments.",
-        badges: `
-            <div class="badges">
-                <span class="badge badge-pink">Python</span>
-                <span class="badge badge-yellow">SQL</span>
-            </div>
-        `,
-        tags: ['Python', 'SQL'],
-        github: "https://github.com/erfanshafagh/dbDesign"
-    },
-    {
-        img: "./assets/spotifyIcon.jpg",
-        title: "Spotify API",
-        description: "This Python script processes audio files, extracts metadata, and updates a Spotify playlist based on the extracted information.",
-        badges: `
-            <div class="badges">
-                <span class="badge badge-orange">Python</span>
-                <span class="badge badge-teal">API</span>
-            </div>
-        `,
-        tags: ['Python', 'API'],
-        github: "https://github.com/erfanshafagh/SpotifyAPI"
-    },
-    {
-        img: "./assets/socket-diagram.jpg",
-        title: "Socket Networking",
-        description: "This project (s-talk) is a command-line chat program that enables communication between two users over a network. It uses UDP sockets for message transmission. The program is developed in C and consists of different modules for input handling, message sending, message receiving, and overall socket management.",
-        badges: `
-            <div class="badges">
-                <span class="badge badge-yellow">C</span>
-                <span class="badge badge-green">Multi-threading</span>
-                <span class="badge badge-cyan">Socket</span>
-            </div>
-        `,
-        tags: ['C', 'Multi-threading', 'Socket'],
-        github: "https://github.com/erfanshafagh/s-talk"
-    },
-    {
-        img: "./assets/OS_simulation.jpg",
-        title: "OS Simulation",
-        description: "This project simulates the behavior of a simple operating system with various processes and commands. It provides an interface for users to interact with the simulated operating system through a command-line interface.",
-        badges: `
-            <div class="badges">
-                <span class="badge badge-pink">C++</span>
-                <span class="badge badge-indigo">OS</span>
-            </div>
-        `,
-        tags: ['C++', 'OS'],
-        github: "https://github.com/erfanshafagh/OS_Simulation"
-    },
-    
-    {
-        img: "./assets/photoshop.png",
-        title: "Mini Photoshop",
-        description: "Mini Photoshop is a Python-based image editing application with a user-friendly GUI built using Tkinter. It provides essential image processing features such as opening BMP files, grayscale conversion, ordered dithering, auto-level adjustment, blur, and more. The application uses PIL, NumPy, and Struct for efficient image processing.",
-        badges: `
-            <div class="badges">
-                <span class="badge badge-orange">Python</span>
-                <span class="badge badge-blue">GUI</span>
-                <span class="badge badge-green">CV</span>
-            </div>
-        `,
-        tags: ['Python', 'GUI', 'CV'],
-        github: "https://github.com/erfanshafagh/miniPhotoshop"
-    },
-    {
-        img: "./assets/rasterization.png",
-        title: "Rasterization Algorithms",
-        description: "A JavaScript-based project that implements rasterization algorithms to draw lines and triangles with color interpolation. Features include line rendering, triangle rasterization using barycentric coordinates, and creative graphical outputs.",
-        badges: `
-            <div class="badges">
-                <span class="badge badge-yellow">JavaScript</span>
-                <span class="badge badge-pink">Graphics</span>
-            </div>
-        `,
-        tags: ['JavaScript', 'Graphics'],
-        github: "https://github.com/erfanshafagh/Rasterization"
-    },
-    {
-        img: "./assets/ds-diagram.png",
-        title: "Bank Simulation",
-        description: "This project implements a bank simulation system in C++. It simulates a bank system with customer arrivals and departures using priority queues, binary heap and queues to manage customers. The project uses dynamic circular queues to represent the bank line, ensuring FIFO order and dynamically adjusting capacity as needed.",
-        badges: `
-            <div class="badges">
-                <span class="badge badge-blue">C++</span>
-                <span class="badge badge-brown">OOP</span>
-                <span class="badge badge-red">DS</span>
-            </div>
-        `,
-        tags: ['C++', 'OOP', 'DS'],
-        github: "https://github.com/erfanshafagh/bankSimulation"
+/* ═══════════════════════════════════════════════════
+   PORTFOLIO SCRIPT
+═══════════════════════════════════════════════════ */
+(function () {
+  "use strict";
+
+  const ICON_MAP = {
+    email:     "ph-envelope",
+    linkedin:  "ph-linkedin-logo",
+    github:    "ph-github-logo",
+    website:   "ph-globe",
+    twitter:   "ph-twitter-logo",
+    instagram: "ph-instagram-logo",
+    cv:        "ph-file-text",
+    default:   "ph-link",
+  };
+
+  function e(s) {
+    const d = document.createElement("div");
+    d.textContent = String(s ?? "");
+    return d.innerHTML;
+  }
+
+  function nameLink(text, href, className) {
+    if (href) {
+      return `<a href="${e(href)}" target="_blank" rel="noopener" class="${className}" style="cursor:pointer">${e(text)}</a>`;
     }
-];
+    return `<span class="${className}">${e(text)}</span>`;
+  }
 
-// --- Skills Data ---
-const skills = [
-    { name: 'Python', class: 'badge-purple' },
-    { name: 'ML', class: 'badge-green' },
-    { name: 'RL', class: 'badge-orange' },
-    { name: 'Robotics', class: 'badge-red' },
-    { name: 'Git', class: 'badge-blue' },
-    { name: 'GitHub', class: 'badge-teal' },
-    { name: 'SQL', class: 'badge-yellow' },
-    { name: 'PyTorch', class: 'badge-brown' },
-    { name: 'C++', class: 'badge-pink' },
-    { name: 'Matlab', class: 'badge-cyan' },
-    { name: 'DSA', class: 'badge-indigo' },
-    { name: 'Java', class: 'badge-orange' },
-    { name: 'PostgreSQL', class: 'badge-teal' },
-    { name: 'Backend', class: 'badge-red' },
-    { name: 'CV', class: 'badge-green' },
-    { name: 'GUI', class: 'badge-blue' },
-    { name: 'Graphics', class: 'badge-purple' },
-    { name: 'Multi-threading', class: 'badge-indigo' },
-    { name: 'Socket', class: 'badge-cyan' },
-    { name: 'OS', class: 'badge-brown' },
-    { name: 'MLP', class: 'badge-pink' },
-    { name: 'NumPy', class: 'badge-green' }    
-    // Add more skills here later
-];
+  function buildTabList() {
+    const showContact = portfolioData.contact?.display !== false;
+    const tabs = [
+      { id: "about",        label: "About Me"     },
+      { id: "education",    label: "Education"    },
+      { id: "experience",   label: "Experience"   },
+      { id: "projects",     label: "Projects"     },
+      { id: "skills",       label: "Skills"       },
+      { id: "publications", label: "Publications" },
+    ];
+    if (showContact) tabs.push({ id: "contact", label: "Contact" });
+    return tabs;
+  }
 
-// --- Timeline Data ---
-const timelineEntries = [
-    {
-        date: "Nov 2024 - Present",
-        title: "Research Assistant",
-        subtitle: "Simon Fraser University",
-        details: "Burnaby, BC, CANADA"
-        // Add more details like GPA, relevant courses as needed
-    },
-    {
-        date: "Feb - Mar 2023",
-        title: "Python Tutor",
-        subtitle: "Volunteer",
-        details: "Burnaby, BC, CANADA"
-        // Add description of responsibilities if desired
-    },
-    {
-        date: "Jan 2023 - Present",
-        title: "Bachelor of Computer Science",
-        subtitle: "Simon Fraser University",
-        details: "Burnaby, BC, CANADA"
-    }
-    // Add more entries here later
-];
+  /* ─────────────────────────────────────────────
+     SIDEBAR
+  ───────────────────────────────────────────── */
+  function renderSidebar() {
+    const { profile } = portfolioData;
+    document.getElementById("avatarImg").src = profile.avatar;
+    document.getElementById("profileName").textContent = profile.name;
+    document.getElementById("profileRole").textContent = profile.role;
 
-// --- Publications Data - UNCOMMENTED ---
-const publications = [
-    {
-        date: { month: "From", year: "April<br>2025" }, // Example date
-        title: "Waffle: Agent-Based Adversarial and Defensive Co-Learning for Adaptive Web Application Firewalls",
-        venue: "Mohammad A. Tayebi, <b>Erfan Shafagh,</b> et al.",
-        description: "In progress"
-    },
-    {
-        date: { month: "May", year: "2025" }, // Example date
-        title: "CleverCatch: A Knowledge-Guided Weak Supervision Model for Fraud Detection",
-        description: "Under Review, CIKM 25",
-        // venueIcon: "fas fa-book", // or fas fa-microphone-alt for talks
-        venue: "A. Mozafari,  K. Hashemi, <b>E. Shafagh,</b> S. Motamedi, A. Taheri, and M. A. Tayebi",
-        // link: "#" // Placeholder link
-    }
-    // Add more publications or talks here later
-];
-
-// --- Certificates Data (Simplified) ---
-const certificates = [
-    { name: "AWS Certified Solutions Architect", link: "#" }, // Link optional
-    { name: "Google Professional Cloud Developer", link: "#" },
-    { name: "Microsoft Certified: Azure Developer Associate", link: "#" }
-    // Add more certificates here later
-];
-
-// --- Visibility Flags ---
-const showPublications = true; 
-const showCertificates = false; // Set to false to hide Certificates section
-
-// --- Global Variables ---
-let projectsVisible = 3; // Default, will be adjusted on load
-let currentFilterTag = 'All'; 
-let filteredProjects = projects; 
-
-// --- Core Functions ---
-
-// Function to get unique tags from projects
-const getUniqueTags = () => {
-    const allTags = projects.reduce((acc, project) => {
-        return acc.concat(project.tags || []); 
-    }, []);
-    const uniqueTags = [...new Set(allTags)].sort(); // Get unique tags and sort them alphabetically
-    return ['All', ...uniqueTags]; // Prepend 'All' to the sorted list
-};
-
-// Function to populate the filter dropdown - NEW
-const populateFilterDropdown = () => {
-    const selectElement = document.getElementById("project-filter-select");
-    if (!selectElement) {
-        console.error("Filter select element (#project-filter-select) not found!");
-        return;
-    }
-
-    const uniqueTags = getUniqueTags();
-    selectElement.innerHTML = ''; // Clear existing options
-
-    uniqueTags.forEach(tag => {
-        const option = document.createElement('option');
-        option.value = tag;
-        option.textContent = tag;
-        selectElement.appendChild(option);
+    const nav = document.getElementById("profileLinks");
+    nav.innerHTML = "";
+    profile.links.forEach(({ label, href, icon }, i) => {
+      const a = document.createElement("a");
+      a.href = href; a.className = "profile-link";
+      a.target = "_blank"; a.rel = "noopener noreferrer";
+      a.innerHTML = `<i class="ph ${ICON_MAP[icon] || ICON_MAP.default}"></i><span>${e(label)}</span>`;
+      a.style.cssText = `opacity:0;transform:translateX(-10px);transition:opacity 360ms ease ${60+i*55}ms,transform 360ms ease ${60+i*55}ms`;
+      nav.appendChild(a);
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        a.style.opacity = "1"; a.style.transform = "translateX(0)";
+      }));
     });
 
-    // Set initial value
-    selectElement.value = currentFilterTag; 
-
-    // Add event listener for changes
-    selectElement.addEventListener('change', (event) => {
-        currentFilterTag = event.target.value;
-        projectsVisible = 3; // Reset visible count when filter changes
-        // No need to re-render dropdown itself, just projects
-        renderProjects(); 
-    });
-};
-
-// Function to render skill badges
-const renderSkills = () => {
-    const skillsList = document.getElementById("skills-list");
-    if (!skillsList) {
-        console.error("Skills list container (#skills-list) not found!");
-        return;
+    /* Location pill — from data.js, same appearance as links, non-interactive */
+    if (profile.location) {
+      const loc = document.createElement("div");
+      loc.className = "profile-link profile-link--static";
+      loc.innerHTML = `<i class="ph ph-map-pin"></i><span>${e(profile.location)}</span>`;
+      loc.style.cssText = `opacity:0;transform:translateX(-10px);transition:opacity 360ms ease ${60+profile.links.length*55}ms,transform 360ms ease ${60+profile.links.length*55}ms`;
+      nav.appendChild(loc);
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        loc.style.opacity = "1"; loc.style.transform = "translateX(0)";
+      }));
     }
-    skillsList.innerHTML = ''; // Clear existing badges
-    skills.forEach(skill => {
-        const badge = document.createElement('span');
-        badge.classList.add('badge', skill.class);
-        badge.textContent = skill.name;
-        skillsList.appendChild(badge);
-    });
-};
+  }
 
-// Function to render timeline entries
-const renderTimeline = () => {
-    const timelineContainer = document.querySelector(".timeline"); // Target the container
-    if (!timelineContainer) {
-        console.error("Timeline container (.timeline) not found!");
-        return;
-    }
-    timelineContainer.innerHTML = ''; // Clear existing items
+  /* ─────────────────────────────────────────────
+     NAV
+  ───────────────────────────────────────────── */
+  let TABS = [];
 
-    timelineEntries.forEach(entry => {
-        const item = document.createElement('div');
-        item.classList.add('timeline-item', 'reveal-fade'); // Add reveal class
+  function renderNav() {
+    TABS = buildTabList();
+    const nav = document.getElementById("tabNav");
+    nav.innerHTML = "";
 
-        item.innerHTML = `
-            <div class="timeline-dot"></div>
-            <div class="timeline-date">${entry.date}</div>
-            <div class="timeline-content">
-                <h3>${entry.title}</h3>
-                ${entry.subtitle ? `<h4>${entry.subtitle}</h4>` : ''} 
-                ${entry.details ? `<p>${entry.details}</p>` : ''}
-            </div>
-        `;
-        timelineContainer.appendChild(item);
+    TABS.forEach(({ id, label }) => {
+      const btn = document.createElement("button");
+      btn.className = "tab-btn"; btn.dataset.tab = id;
+      btn.textContent = label;
+      btn.setAttribute("role", "tab");
+      btn.addEventListener("click", () => switchTab(id));
+      nav.appendChild(btn);
     });
 
-    // Re-run reveal check after adding timeline items
-    revealElementsOnScroll(); 
-};
+    const sep = document.createElement("span");
+    sep.className = "nav-separator";
+    nav.appendChild(sep);
 
-// Function to render publications - UNCOMMENTED
-const renderPublications = () => {
-    const section = document.getElementById("publications");
-    if (!section) return; // Exit if section itself doesn't exist
-    
-    // Hide section if flag is false
-    if (!showPublications) {
-        section.style.display = 'none';
-        return;
-    }
-    // Ensure section is visible if flag is true
-    section.style.display = ''; // Reset display style
+    const toggle = document.createElement("button");
+    toggle.className = "theme-toggle"; toggle.id = "themeToggle";
+    toggle.setAttribute("aria-label", "Toggle theme");
+    toggle.innerHTML = `<i class="ph ph-sun" id="themeIcon"></i>`;
+    toggle.addEventListener("click", toggleTheme);
+    nav.appendChild(toggle);
+  }
 
-    const wrapper = section.querySelector(".publications-wrapper"); // Target wrapper within the section
-    if (!wrapper) {
-        console.error("Publications wrapper (.publications-wrapper) not found!");
-        return;
-    }
-    wrapper.innerHTML = ''; // Clear existing items
-
-    publications.forEach(pub => {
-        const card = document.createElement('div');
-        card.classList.add('publication-card', 'reveal-fade');
-
-        card.innerHTML = `
-            <div class="publication-date">
-                <span class="month">${pub.date.month}</span>
-                <span class="year">${pub.date.year}</span>
-            </div>
-            <div class="publication-content">
-                <h3>${pub.title}</h3>
-                <div class="publication-venue">
-                    ${pub.venueIcon ? `<i class="${pub.venueIcon}"></i>` : ''} ${pub.venue}
-                </div> 
-                <p>${pub.description}</p> 
-                <!--  ${pub.link ? `<a href="${pub.link}" target="_blank" class="publication-link">Read More</a>` : '' } -->
-            </div>
-        `;
-        wrapper.appendChild(card);
+  function switchTab(tabId) {
+    document.querySelectorAll(".tab-btn").forEach(b =>
+      b.classList.toggle("active", b.dataset.tab === tabId));
+    document.querySelectorAll(".panel").forEach(p => {
+      const hit = p.id === "panel-" + tabId;
+      if (hit && !p.classList.contains("active")) {
+        p.classList.add("active");
+        p.style.animation = "none"; p.offsetHeight; p.style.animation = "";
+        if (tabId === "projects") setTimeout(initProjectDropdown, 30);
+      } else if (!hit) {
+        p.classList.remove("active");
+      }
     });
+    try { sessionStorage.setItem("activeTab", tabId); } catch (_) {}
+  }
 
-    revealElementsOnScroll(); 
-};
-
-// Function to render certificates (NEW Logic)
-const renderCertificates = () => {
-    const section = document.getElementById("certificates");
-    if (!section) return; 
-    
-    if (!showCertificates) {
-        section.style.display = 'none';
-        return;
-    }
-    section.style.display = ''; 
-
-    const listElement = section.querySelector("#certificates-list"); 
-    if (!listElement) {
-        console.error("Certificates list (#certificates-list) not found!");
-        return;
-    }
-    listElement.innerHTML = ''; 
-
-    // SVG Icon HTML (using currentColor)
-    const svgIcon = `
-        <svg xmlns="http://www.w3.org/2000/svg" class="cert-icon" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-        </svg>
-    `;
-
-    certificates.forEach(cert => {
-        const listItem = document.createElement('li');
-        
-        let content = `${svgIcon}<span>${cert.name}</span>`;
-        // Wrap in link if provided
-        if (cert.link && cert.link !== '#') {
-           content = `<a href="${cert.link}" target="_blank" class="certificate-link">${content}</a>`;
-        }
-
-        listItem.innerHTML = content;
-        listElement.appendChild(listItem);
-    });
-
-    // We only need to trigger reveal for the section container now
-    // revealElementsOnScroll(); // Reveal logic handles the section itself
-};
-
-// Define reveal function globally
-const revealElementsOnScroll = () => {
-    const revealElements = document.querySelectorAll('.reveal-text, .reveal-left, .reveal-right, .reveal-fade');
-    const projectListContainer = document.getElementById("project-list");
-    const filterWrapper = document.querySelector(".filter-select-wrapper"); // Select the wrapper div
-
-    let allRevealElements = Array.from(revealElements);
-    if (projectListContainer) {
-        const dynamicProjectCards = projectListContainer.querySelectorAll('.project-card.reveal-fade');
-        allRevealElements = [...allRevealElements, ...Array.from(dynamicProjectCards)];
-    }
-    // Include filter dropdown wrapper in reveal animation if it has the class
-    if (filterWrapper && filterWrapper.classList.contains('reveal-fade')) {
-        allRevealElements.push(filterWrapper);
-    }
-
-    allRevealElements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisibleThreshold = 50; 
-        if (elementTop < window.innerHeight - elementVisibleThreshold) {
-            element.classList.add('active');
-        } 
-    });
-};
-
-// Updated Function to render the projects (handles filtering)
-function renderProjects() {
-    const projectList = document.getElementById("project-list");
-    const showMoreBtn = document.getElementById("show-more-btn");
-    
-    if (!projectList) {
-        console.error("Project list element (#project-list) not found!"); 
-        return;
-    }
-
-    // 1. Filter projects based on the current tag
-    filteredProjects = projects.filter(project => 
-        currentFilterTag === 'All' || (project.tags && project.tags.includes(currentFilterTag))
-    );
-
-    // 2. Determine visible projects from the filtered list
-    projectList.innerHTML = '';
-    const visibleFilteredProjects = filteredProjects.slice(0, Math.min(projectsVisible, filteredProjects.length)); 
-
-    // 3. Render the visible filtered projects
-    if (visibleFilteredProjects.length === 0) {
-        projectList.innerHTML = '<p style="grid-column: 1 / -1; text-align: center;">No projects match this filter.</p>';
-    } else {
-        visibleFilteredProjects.forEach(project => {
-            const card = document.createElement("div");
-            card.classList.add("project-card"); 
-            card.classList.add("reveal-fade"); 
-
-            card.innerHTML = `
-                <div class="project-img">
-                    <img src="${project.img}" alt="${project.title}">
-                </div>
-                <div class="project-content">
-                    <h3>${project.title}</h3>
-                    <p>${project.description}</p>
-                    ${project.badges} 
-                     <div class="project-links">
-                        ${project.github === 'https://rizzervit.onrender.com/home' || project.github === 'https://drive.google.com/drive/folders/1X4j89rxxkbcUG9T9s3kRpvH9n0AcpH-o?usp=sharing' ? 
-                            `<a href="${project.github}" target="_blank" class="project-link github-link"><i class="fas fa-globe"></i> Website</a>` :
-                        project.github ? 
-                            `<a href="${project.github}" target="_blank" class="project-link github-link"><i class="fab fa-github"></i> GitHub</a>` :
-                        ''}
-                     </div>
-                </div>
-            `;
-           
-            projectList.appendChild(card);
-        });
-    }
-
-    // 4. Update Show More Button based on the filtered list
-    if (showMoreBtn) {
-        const totalFilteredProjects = filteredProjects.length;
-        const currentlyVisibleCount = visibleFilteredProjects.length;
-
-        if (currentlyVisibleCount >= totalFilteredProjects) {
-             // If all filtered projects are shown, decide whether to show "Show Less" or hide
-             if (totalFilteredProjects > 3) { // Only show "Show Less" if more than initial load were ever possible
-                 showMoreBtn.textContent = "Show Less";
-                 showMoreBtn.style.display = 'inline-block';
-             } else {
-                 showMoreBtn.style.display = 'none'; // Hide if total filtered is 3 or less
-             }
-        } else {
-            showMoreBtn.textContent = "Show More";
-            showMoreBtn.style.display = 'inline-block'; // Ensure it's visible
-        }
-    }
-
-    // Call reveal function AFTER rendering
-    revealElementsOnScroll(); 
-}
-
-// --- Helper Functions (scrollToTop, scrollFunction) ---
-function scrollToTop(){
-    window.scrollTo({top: 0, behavior: 'smooth'});
-}
-
-const backToTopButton = document.getElementById('backToTop');
-const scrollFunction = () => {
-    if (!backToTopButton) return; 
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-        backToTopButton.classList.add('visible');
-    } else {
-        backToTopButton.classList.remove('visible');
-    }
-}
-
-// --- DOMContentLoaded Event Listener ---
-document.addEventListener('DOMContentLoaded', function() {
-  // Get DOM elements
-  const hamburger = document.querySelector('.hamburger');
-  const navLinks = document.querySelector('.nav-links');
-  const themeToggle = document.getElementById('theme-toggle');
-  const htmlElement = document.documentElement;
-  const showMoreBtn = document.getElementById("show-more-btn"); 
-  const contactForm = document.getElementById('contactForm');
-  const formStatus = document.getElementById('formStatus');
-  const backToTopBtnElement = document.getElementById('backToTop');
-  const projectListElement = document.getElementById("project-list");
-
-  // Mobile menu toggle
-  if (hamburger && navLinks) { 
-    hamburger.addEventListener('click', function() {
-      hamburger.classList.toggle('active');
-      navLinks.classList.toggle('active');
+  /* ─────────────────────────────────────────────
+     PANELS
+  ───────────────────────────────────────────── */
+  function renderPanels() {
+    const c = document.getElementById("panelContainer");
+    c.innerHTML = "";
+    const builders = {
+      about: buildAbout, education: buildEducation,
+      experience: buildExperience, projects: buildProjects,
+      skills: buildSkills, publications: buildPublications,
+      contact: buildContact,
+    };
+    TABS.forEach(({ id }) => {
+      const div = document.createElement("div");
+      div.className = "panel"; div.id = "panel-" + id;
+      div.setAttribute("role", "tabpanel");
+      div.innerHTML = builders[id]();
+      c.appendChild(div);
     });
   }
 
-  // Theme toggle functionality
-  if (themeToggle && htmlElement) { 
-      const savedTheme = localStorage.getItem('theme');
-      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      
-      const updateThemeIcon = (isDarkMode) => {
-          if (!themeToggle) return;
-          const sunIcon = themeToggle.querySelector('.fa-sun');
-          const moonIcon = themeToggle.querySelector('.fa-moon');
-          if (sunIcon && moonIcon) {
-              sunIcon.style.display = isDarkMode ? 'block' : 'none';
-              moonIcon.style.display = isDarkMode ? 'none' : 'block';
-          }
+  /* ─── ABOUT — scrollable inner wrapper ─── */
+  function buildAbout() {
+    const { about } = portfolioData;
+    const bio = about.bio.map(p => `<p>${e(p)}</p>`).join("");
+    const stats = about.stats.map(({ value, label }) =>
+      `<div class="stat-card">
+         <div class="stat-value">${e(value)}</div>
+         <div class="stat-label">${e(label)}</div>
+       </div>`
+    ).join("");
+    return `
+      <div class="ph-eyebrow">Introduction</div>
+      <h2 class="ph-heading">${e(about.greeting)}</h2>
+      <div class="about-scroll">
+        <div class="about-bio">${bio}</div>
+        <div class="stats-row">${stats}</div>
+      </div>`;
+  }
+
+  /* ─── EDUCATION ─── */
+  function buildEducation() {
+    const items = portfolioData.education.map(({ degree, school, website, year, description, gpa }) =>
+      `<div class="timeline-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div class="tl-title">${e(degree)}</div>
+            <div class="tl-year">${e(year)}</div>
+          </div>
+          <div class="tl-entity-row">
+            ${nameLink(school, website || null, "tl-school")}
+          </div>
+          <p class="tl-desc">${e(description)}</p>
+          ${gpa ? `<div class="tl-gpa">GPA: ${e(gpa)}</div>` : ""}
+        </div>
+      </div>`
+    ).join("");
+    return `<div class="ph-eyebrow">Academic Background</div>
+            <h2 class="ph-heading">Education</h2>
+            <div class="timeline">${items}</div>`;
+  }
+
+  /* ─── EXPERIENCE — timeline with expandable highlights ─── */
+  function buildExperience() {
+    const items = portfolioData.experience.map(({ title, company, website, period, location, highlights }, idx) => {
+      const hlItems = highlights.map(h => `<li>${e(h)}</li>`).join("");
+      const locationHTML = location
+        ? `<span class="tl-location"><i class="ph ph-map-pin"></i>${e(location)}</span>`
+        : "";
+
+      return `
+        <div class="timeline-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-header">
+              <div class="tl-title">${e(title)}</div>
+              <div class="tl-year">${e(period)}</div>
+            </div>
+            <div class="tl-entity-row">
+              ${nameLink(company, website || null, "tl-school")}
+              ${locationHTML}
+              <button class="exp-toggle" data-exp="${idx}" aria-expanded="false" style="margin-left:auto">
+                Show more <i class="ph ph-caret-down"></i>
+              </button>
+            </div>
+            <div class="exp-highlights-wrap" id="exp-hl-${idx}">
+              <ul class="highlight-list">${hlItems}</ul>
+            </div>
+          </div>
+        </div>`;
+    }).join("");
+
+    return `<div class="ph-eyebrow">Work History</div>
+            <h2 class="ph-heading">Experience</h2>
+            <div class="timeline">${items}</div>`;
+  }
+
+  /* ─── PROJECTS — dropdown inside list ─── */
+  function buildProjects() {
+    const projs = portfolioData.projects;
+    const allTags = [...new Set(projs.flatMap(p => p.tags))];
+    const options = ["All", ...allTags].map((t, i) =>
+      `<option value="${e(t)}"${i === 0 ? " selected" : ""}>${e(t)}</option>`
+    ).join("");
+
+    const listItems = projs.map((p, i) =>
+      `<div class="md-item${i === 0 ? " selected" : ""}"
+            data-idx="${i}"
+            data-tags='${JSON.stringify(p.tags)}'
+            tabindex="0">
+        <div class="proj-item-name">${e(p.name)}</div>
+        <div class="proj-item-tagline">${e(p.tagline)}</div>
+      </div>`
+    ).join("");
+
+    return `<div class="ph-eyebrow">Selected Work</div>
+            <h2 class="ph-heading">Projects</h2>
+            <div class="md-layout two-col">
+              <div class="md-list" id="projList">
+                <div class="proj-filter-sticky">
+                  <select class="proj-filter-select" id="projFilterSelect">${options}</select>
+                </div>
+                ${listItems}
+              </div>
+              <div class="md-detail" id="projDetail">${projDetailHTML(projs[0])}</div>
+            </div>`;
+  }
+
+  function projDetailHTML({ name, tagline, description, tags, links, image }) {
+    const tagsHTML = tags.map(t => `<span class="proj-tag">${e(t)}</span>`).join("");
+    const linkBtns = [
+      links.live   ? `<a href="${e(links.live)}"   target="_blank" rel="noopener" class="proj-link"><i class="ph ph-arrow-square-out"></i>Live Demo</a>`   : "",
+      links.github ? `<a href="${e(links.github)}" target="_blank" rel="noopener" class="proj-link"><i class="ph ph-github-logo"></i>Source Code</a>` : "",
+    ].filter(Boolean).join("");
+    const imgHTML = image
+      ? `<img class="proj-detail-img" src="${e(image)}" alt="${e(name)}" loading="lazy" />`
+      : "";
+
+    return `
+      <div class="proj-detail-header">
+        <div class="proj-detail-text">
+          <div class="proj-detail-name">${e(name)}</div>
+          <div class="proj-detail-line">${e(tagline)}</div>
+        </div>
+        ${imgHTML}
+      </div>
+      <p class="proj-detail-desc">${e(description)}</p>
+      <div class="proj-detail-tags">${tagsHTML}</div>
+      ${linkBtns ? `<div class="proj-detail-links">${linkBtns}</div>` : ""}`;
+  }
+
+  function initProjectDropdown() {
+    const select    = document.getElementById("projFilterSelect");
+    const projList  = document.getElementById("projList");
+    const projDetail= document.getElementById("projDetail");
+    if (!select || !projList) return;
+
+    const fresh = select.cloneNode(true);
+    select.parentNode.replaceChild(fresh, select);
+
+    fresh.addEventListener("change", () => {
+      const tag = fresh.value;
+      const items = projList.querySelectorAll(".md-item");
+      let firstVisible = null;
+      items.forEach(item => {
+        const tags = JSON.parse(item.dataset.tags || "[]");
+        const show = tag === "All" || tags.includes(tag);
+        item.style.display = show ? "" : "none";
+        if (show && !firstVisible) firstVisible = item;
+      });
+      if (firstVisible) {
+        items.forEach(i => i.classList.remove("selected"));
+        firstVisible.classList.add("selected");
+        swapDetail(projDetail, projDetailHTML(portfolioData.projects[parseInt(firstVisible.dataset.idx, 10)]));
+      }
+    });
+
+    projList.addEventListener("click", ev => {
+      const item = ev.target.closest(".md-item");
+      if (!item) return;
+      projList.querySelectorAll(".md-item").forEach(i => i.classList.remove("selected"));
+      item.classList.add("selected");
+      swapDetail(projDetail, projDetailHTML(portfolioData.projects[parseInt(item.dataset.idx, 10)]));
+    });
+
+    projList.addEventListener("keydown", ev => {
+      if (ev.key === "Enter" || ev.key === " ") ev.target.click();
+    });
+  }
+
+  function swapDetail(pane, html) {
+    pane.innerHTML = html;
+    pane.classList.remove("entering"); pane.offsetHeight; pane.classList.add("entering");
+  }
+
+  /* ─── SKILLS — scrollable data-rail bands ─── */
+  function buildSkills() {
+    const bands = portfolioData.skills.map(({ category, color, items }) => `
+      <div class="skill-band" style="--cat-color:${color}">
+        <div class="skill-band-label">
+          <span class="skill-band-name">${e(category)}</span>
+        </div>
+        <div class="skill-band-chips">
+          ${items.map(s => `<span class="skill-chip">${e(s)}</span>`).join("")}
+        </div>
+      </div>`
+    ).join("");
+
+    return `<div class="ph-eyebrow">Technical Proficiency</div>
+            <h2 class="ph-heading">Skills</h2>
+            <div class="skills-bands">${bands}</div>`;
+  }
+
+  /* ─── PUBLICATIONS — with authors ─── */
+  function buildPublications() {
+    const items = portfolioData.publications.map(({ title, venue, venueLink, authors, highlightAuthor, abstract, links, citations, tags }, idx) => {
+      const pdfBtn = links.pdf
+        ? `<a href="${e(links.pdf)}" target="_blank" rel="noopener" class="pub-link"><i class="ph ph-file-pdf"></i>PDF</a>` : "";
+      const doiBtn = links.doi
+        ? `<a href="${e(links.doi)}" target="_blank" rel="noopener" class="pub-link"><i class="ph ph-link"></i>DOI</a>` : "";
+      const citeSpan = citations != null
+        ? `<span class="pub-link" style="cursor:default"><i class="ph ph-quotes"></i>${citations} citations</span>` : "";
+      const tagsHTML = (tags || []).map(t => `<span class="pub-tag">${e(t)}</span>`).join("");
+
+      const venueHTML = venueLink
+        ? `<a href="${e(venueLink)}" target="_blank" rel="noopener" class="pub-venue">${e(venue)}</a>`
+        : `<span class="pub-venue">${e(venue)}</span>`;
+
+      const authorsHTML = authors && authors.length
+        ? `<div class="pub-authors">${authors.map(a =>
+            a === highlightAuthor
+              ? `<strong style="color:var(--text-2);font-weight:600">${e(a)}</strong>`
+              : e(a)
+          ).join(", ")}</div>`
+        : "";
+
+      return `
+        <div class="pub-item">
+          <div class="pub-dot"></div>
+          <div class="pub-card">
+            <div class="pub-title">${e(title)}</div>
+            ${authorsHTML}
+            ${venueHTML}
+            <div class="pub-footer">
+              <div class="pub-footer-links">
+                ${pdfBtn}${doiBtn}${citeSpan}
+                ${abstract ? `
+                  <button class="abstract-toggle" data-pub="${idx}" aria-expanded="false">
+                    Abstract <i class="ph ph-caret-down"></i>
+                  </button>` : ""}
+              </div>
+              <div class="pub-footer-tags">${tagsHTML}</div>
+            </div>
+            ${abstract ? `
+              <div class="pub-abstract-wrap" id="pub-abstract-${idx}">
+                <div class="pub-abstract">${e(abstract)}</div>
+              </div>` : ""}
+          </div>
+        </div>`;
+    }).join("");
+
+    return `<div class="ph-eyebrow">Research & Writing</div>
+            <h2 class="ph-heading">Publications</h2>
+            <div class="pub-timeline">${items}</div>`;
+  }
+
+  /* ─── CONTACT ─── */
+  function buildContact() {
+    const { contact } = portfolioData;
+    const showForm = contact.form === true;
+
+    const socials = contact.socials.map(({ label, href, icon }) =>
+      `<a href="${e(href)}" target="_blank" rel="noopener" class="contact-social">
+         <i class="ph ${e(icon)}"></i>${e(label)}</a>`
+    ).join("");
+
+    /* Info rows (left) + social buttons (right) in a horizontal card */
+    const infoCard = `
+      <div class="contact-info-card">
+        <div class="contact-info-fields">
+          <div class="contact-field">
+            <div class="ci-label">Email</div>
+            <a href="mailto:${e(contact.email)}" class="ci-value ci-link">${e(contact.email)}</a>
+          </div>
+          <div class="contact-field">
+            <div class="ci-label">Availability</div>
+            <div class="ci-value">${e(contact.availability)}</div>
+          </div>
+          <div class="contact-field">
+            <div class="ci-label">Response Time</div>
+            <div class="ci-value">${e(contact.responseTime)}</div>
+          </div>
+        </div>
+        <div class="contact-socials-col">
+          ${socials}
+        </div>
+      </div>`;
+
+    const formBlock = showForm ? `
+      <div class="contact-form-wrap">
+        <form class="contact-form" id="contactForm" onsubmit="return false;">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="cf-name">Name</label>
+              <input id="cf-name" class="form-input" type="text" placeholder="Jane Smith" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cf-email">Email</label>
+              <input id="cf-email" class="form-input" type="email" placeholder="jane@example.com" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cf-msg">Message</label>
+            <textarea id="cf-msg" class="form-textarea" placeholder="Tell me about your project…"></textarea>
+          </div>
+          <button type="submit" class="form-submit" id="formSubmit">
+            <i class="ph ph-paper-plane-tilt"></i>Send Message
+          </button>
+        </form>
+      </div>` : "";
+
+    return `
+      <div class="ph-eyebrow">Get In Touch</div>
+      <h2 class="ph-heading">Contact Me</h2>
+      <p class="contact-intro">${e(contact.intro)}</p>
+      ${infoCard}
+      ${formBlock}`;
+  }
+
+  /* ─────────────────────────────────────────────
+     WIRE
+  ───────────────────────────────────────────── */
+  function wireAll() {
+    initProjectDropdown();
+    wireContactForm();
+  }
+
+  function wireDelegatedToggles() {
+    const container = document.getElementById("panelContainer");
+    if (!container) return;
+
+    container.addEventListener("click", ev => {
+      /* Abstract toggle */
+      const absBtn = ev.target.closest(".abstract-toggle");
+      if (absBtn) {
+        const idx  = absBtn.dataset.pub;
+        const wrap = document.getElementById("pub-abstract-" + idx);
+        if (!wrap) return;
+        const open = !wrap.classList.contains("open");
+        wrap.classList.toggle("open", open);
+        absBtn.classList.toggle("open", open);
+        absBtn.setAttribute("aria-expanded", String(open));
+        absBtn.innerHTML = open
+          ? `Hide <i class="ph ph-caret-down"></i>`
+          : `Abstract <i class="ph ph-caret-down"></i>`;
+        return;
       }
 
-      if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-        htmlElement.classList.add('dark-mode');
-        updateThemeIcon(true);
-      } else {
-        htmlElement.classList.remove('dark-mode');
-        updateThemeIcon(false);
+      /* Experience highlights toggle */
+      const expBtn = ev.target.closest(".exp-toggle");
+      if (expBtn) {
+        const idx  = expBtn.dataset.exp;
+        const wrap = document.getElementById("exp-hl-" + idx);
+        if (!wrap) return;
+        const open = !wrap.classList.contains("open");
+        wrap.classList.toggle("open", open);
+        expBtn.classList.toggle("open", open);
+        expBtn.setAttribute("aria-expanded", String(open));
+        expBtn.innerHTML = open
+          ? `Show less <i class="ph ph-caret-down"></i>`
+          : `Show more <i class="ph ph-caret-down"></i>`;
+        return;
       }
-      
-      themeToggle.addEventListener('click', function() {
-        const isDarkMode = htmlElement.classList.toggle('dark-mode');
-        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-        updateThemeIcon(isDarkMode);
-      });
-  }
-  
-  // --- Initial Responsive Setup ---
-  const initialWidth = window.innerWidth;
-  // Set initial count based on width
-  projectsVisible = initialWidth >= 1024 ? 3 : 4; 
-
-  // Show More/Less Button Logic (Width-dependent increment and reset)
-  if (showMoreBtn && projectListElement) { 
-      showMoreBtn.addEventListener("click", () => {
-          const currentWidth = window.innerWidth;
-          // Determine reset and increment counts based on current width
-          const resetCount = currentWidth >= 1024 ? 3 : 4;
-          const incrementCount = currentWidth >= 1024 ? 3 : 2;
-
-          const currentlyVisibleCount = projectListElement.children.length;
-          
-          // Reset if all filtered projects are shown
-          if (currentlyVisibleCount >= filteredProjects.length) { 
-              projectsVisible = resetCount; 
-          } else {
-              projectsVisible += incrementCount; // Increment based on width
-          }
-          renderProjects(); // Re-render projects
-      });
-  }
-  
-  // Back to Top Button Click Listener
-  if (backToTopBtnElement) {
-      backToTopBtnElement.addEventListener('click', scrollToTop);
+    });
   }
 
-  // Initial Setup
-  renderSkills(); 
-  renderTimeline(); 
-  renderPublications(); 
-  renderCertificates(); // Render the certificates
-  populateFilterDropdown(); 
-  renderProjects(); 
-  
-  // Scroll Event Listeners
-  window.addEventListener('scroll', () => {
-      revealElementsOnScroll(); 
-      scrollFunction(); 
-  });
-  window.addEventListener('load', revealElementsOnScroll);
+  function wireContactForm() {
+    const form = document.getElementById("contactForm");
+    const btn  = document.getElementById("formSubmit");
+    if (!form || !btn) return;
+    form.addEventListener("submit", () => {
+      btn.innerHTML = `<i class="ph ph-check"></i>Sent!`;
+      btn.style.opacity = "0.7"; btn.style.pointerEvents = "none";
+      setTimeout(() => {
+        btn.innerHTML = `<i class="ph ph-paper-plane-tilt"></i>Send Message`;
+        btn.style.opacity = ""; btn.style.pointerEvents = "";
+        form.reset();
+      }, 2600);
+    });
+  }
 
-});
+  /* ─────────────────────────────────────────────
+     CIRCULAR FAVICON — draws avatar on canvas with circle clip
+  ───────────────────────────────────────────── */
+  function setCircularFavicon(src) {
+    const size = 64;
+    const canvas = document.createElement("canvas");
+    canvas.width = canvas.height = size;
+    const ctx = canvas.getContext("2d");
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = function () {
+      ctx.clearRect(0, 0, size, size);
+      ctx.beginPath();
+      ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
+      ctx.closePath();
+      ctx.clip();
+      ctx.drawImage(img, 0, 0, size, size);
+      const link = document.getElementById("favicon");
+      if (link) link.href = canvas.toDataURL("image/png");
+    };
+    img.src = src;
+  }
+  function initTheme() {
+    let saved = "dark";
+    try { saved = localStorage.getItem("theme") || "dark"; } catch (_) {}
+    applyTheme(saved);
+  }
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    const icon = document.getElementById("themeIcon");
+    if (icon) icon.className = theme === "dark" ? "ph ph-sun" : "ph ph-moon";
+    try { localStorage.setItem("theme", theme); } catch (_) {}
+  }
+
+  function toggleTheme() {
+    applyTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark");
+  }
+
+  /* ─────────────────────────────────────────────
+     INIT
+  ───────────────────────────────────────────── */
+  function init() {
+    renderSidebar();
+    renderNav();
+    renderPanels();
+    initTheme();
+
+    let start = "about";
+    try { start = sessionStorage.getItem("activeTab") || "about"; } catch (_) {}
+    if (!TABS.find(t => t.id === start)) start = TABS[0].id;
+    switchTab(start);
+
+    requestAnimationFrame(() => {
+      wireAll();
+      wireDelegatedToggles();
+    });
+
+    /* Set circular favicon from the same avatar URL used in the sidebar */
+    setCircularFavicon(portfolioData.profile.avatar);
+
+    document.getElementById("tabNav").addEventListener("click", () => {
+      requestAnimationFrame(() => wireAll());
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", init);
+})();
