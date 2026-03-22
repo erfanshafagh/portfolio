@@ -3,7 +3,7 @@ const portfolioData = {
     name: "Erfan Shafagh",
     role: "Machine Learning Researcher",
     location: "Burnaby, BC, Canada",
-    avatar: "assets/avatar.PNG",
+    avatar: "assets/PP.png",
     links: [
       { label: "esa104@sfu.ca",                    href: "mailto:esa104@sfu.ca",                          icon: "email"    },
       { label: "linkedin.com/in/erfan-shafagh",    href: "https://www.linkedin.com/in/erfan-shafagh/",    icon: "linkedin" },
