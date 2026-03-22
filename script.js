@@ -518,26 +518,11 @@
   }
 
   /* ─────────────────────────────────────────────
-     CIRCULAR FAVICON — draws avatar on canvas with circle clip
+     FAVICON — set directly from avatar URL
   ───────────────────────────────────────────── */
-  function setCircularFavicon(src) {
-    const size = 64;
-    const canvas = document.createElement("canvas");
-    canvas.width = canvas.height = size;
-    const ctx = canvas.getContext("2d");
-    const img = new Image();
-    img.crossOrigin = "anonymous";
-    img.onload = function () {
-      ctx.clearRect(0, 0, size, size);
-      ctx.beginPath();
-      ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
-      ctx.closePath();
-      ctx.clip();
-      ctx.drawImage(img, 0, 0, size, size);
-      const link = document.getElementById("favicon");
-      if (link) link.href = canvas.toDataURL("image/png");
-    };
-    img.src = src;
+  function setFavicon(src) {
+    const link = document.getElementById("favicon");
+    if (link) link.href = src;
   }
   function initTheme() {
     let saved = "dark";
@@ -575,8 +560,8 @@
       wireDelegatedToggles();
     });
 
-    /* Set circular favicon from the same avatar URL used in the sidebar */
-    setCircularFavicon(portfolioData.profile.avatar);
+    /* Set favicon from the same avatar URL used in the sidebar */
+    setFavicon(portfolioData.profile.avatar);
 
     document.getElementById("tabNav").addEventListener("click", () => {
       requestAnimationFrame(() => wireAll());
