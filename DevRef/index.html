@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevRef — Developer Command Reference</title>
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' fill='none'/%3E%3Crect x='32' y='48' width='192' height='160' rx='8' fill='none' stroke='%233c6e71' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'/%3E%3Cline x1='32' y1='96' x2='224' y2='96' fill='none' stroke='%233c6e71' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'/%3E%3Cline x1='112' y1='160' x2='152' y2='160' fill='none' stroke='%233c6e71' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'/%3E%3Cpolyline points='64 136 88 160 64 184' fill='none' stroke='%233c6e71' stroke-linecap='round' stroke-linejoin='round' stroke-width='16'/%3E%3C/svg%3E" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,300&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="layout">
+    
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-inner">
+        
+        <div class="avatar-ring">
+          <div class="code-logo">
+            <i class="ph ph-terminal-window"></i>
+          </div>
+        </div>
+        
+        <h1 class="profile-name">DevRef</h1>
+        <p class="profile-role">Command Reference</p>
+        <div class="divider"></div>
+        <nav class="profile-links" id="sb-nav"></nav>
+      </div>
+    </aside>
+
+    <div id="sidebar-overlay"></div>
+
+    <main class="main-content">
+      <nav class="tab-nav" id="topbar">
+        <button id="hamburger" class="icon-btn" aria-label="Toggle Menu">
+          <i class="ph ph-list"></i>
+        </button>
+        
+        <div class="search-wrapper">
+          <i class="ph ph-magnifying-glass search-icon"></i>
+          <input type="text" id="gsearch" placeholder="Search commands, flags, examples..." autocomplete="off" spellcheck="false" />
+          <button id="search-clear" class="icon-btn hidden" aria-label="Clear Search">
+            <i class="ph ph-x"></i>
+          </button>
+        </div>
+
+        <div id="result-count" class="result-count hidden">0 results</div>
+
+        <div class="nav-separator"></div>
+
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <i class="ph ph-sun" id="themeIcon"></i>
+        </button>
+      </nav>
+
+      <div class="panel-container">
+        <div class="panel active" id="content">
+          </div>
+      </div>
+    </main>
+
+  </div>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
