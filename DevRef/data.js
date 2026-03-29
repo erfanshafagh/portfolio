@@ -13,7 +13,7 @@ const TOOLS = [
  sections:[
   {name:'Command Palette & Settings',cmds:[
    {id:'vs01',cmd:'Ctrl+Shift+P',isShortcut:true,desc:'Open Command Palette — run any command',args:[],example:''},
-   {id:'vs02',cmd:'F1',isShortcut:true,desc:'Open Command Palette (alternative)',args:[],example:''},
+   {id:'vs02',cmd:'F1',isShortcut:true,desc:'Open Command Palette (alternative)',args:[],example:'', H:true},
    {id:'vs03',cmd:'Ctrl+,',isShortcut:true,desc:'Open Settings (User Preferences)',args:[],example:''},
    {id:'vs04',cmd:'Ctrl+K then Ctrl+S',isShortcut:true,desc:'Open Keyboard Shortcuts editor',args:[],example:''},
    {id:'vs05',cmd:'Ctrl+K then T',isShortcut:true,desc:'Open Color Theme picker',args:[],example:''},
@@ -317,7 +317,7 @@ const TOOLS = [
   {name:'File & Directory Operations',cmds:[
    {id:'b01',cmd:'ls',syntax:'ls [options] [path]',desc:'List directory contents',
     args:[['-l','flag','Long format — permissions, owner, size, date',false],['-a','flag','Show hidden files (dotfiles)',false],['-h','flag','Human-readable file sizes',false],['-R','flag','Recursive listing of all subdirectories',false],['--sort=size','flag','Sort output by file size',false],['-F','flag','Append indicator: / dirs, * executables',false]],
-    example:'ls -lahF /var/log\nls -lt --sort=time'},
+    example:'ls -lahF /var/log\nls -lt --sort=time', H: true},
    {id:'b02',cmd:'cp',syntax:'cp [options] <src> <dest>',desc:'Copy files or directories',
     args:[['-r','flag','Recursive — copy directories',false],['-p','flag','Preserve timestamps, permissions, ownership',false],['-u','flag','Copy only if source is newer',false],['-v','flag','Verbose — print each file copied',false],['-a','flag','Archive: same as -dpr (all attributes, recursive)',false],['--backup','flag','Make a backup of existing destination files',false]],
     example:'cp -rp ./src ./backup-src\ncp -a /etc/nginx /etc/nginx.bak'},

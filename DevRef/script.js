@@ -4,7 +4,7 @@
 (function () {
   "use strict";
 
-  let activeToolId = 'git'; // Fallback if no data or first init
+  let activeToolId = 'vscode'; // Fallback if no data or first init
   let expanded = new Set();
   let searchQuery = '';
 
@@ -104,7 +104,7 @@
     }
 
     return `
-      <div class="cmd-row${hasExpand ? ' expandable' : ''}${isExp ? ' expanded' : ''}" id="row-${cmd.id}">
+      <div class="cmd-row${hasExpand ? ' expandable' : ''}${isExp ? ' expanded' : ''}${cmd.H ? ' highlighted' : ''}" id="row-${cmd.id}">
         <div class="cmd-main">
           
           <div class="cmd-left">

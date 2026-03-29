@@ -182,9 +182,19 @@ const portfolioData = {
       items: ["Python", "C++", "C", "Java"],
     },
     {
-      category: "ML / DL",
+      category: "Learning Paradigms",
+      color: "#63285d",
+      items: ["Supervised Learning", "Unsupervised Learning", "Semi-supervised Learning", "Self-supervised learning", "Reinforcement Learning"],
+    },
+    {
+      category: "Domains",
+      color: "#634328",
+      items: ["Fraud Detection", "Anomaly Detection", "Computer Vision", "Natural Language Processing", "Robotics", "Computer Graphics"],
+    },
+    {
+      category: "Frameworks & Libraries",
       color: "#3c6e71",
-      items: ["PyTorch", "Scikit-learn", "NumPy", "Pandas", "Matplotlib", "Hugging Face", "Kaggle", "Google Colab"],
+      items: ["PyTorch", "Scikit-learn", "NumPy", "Pandas", "Matplotlib", "Hugging Face", "ROS2", "Spring Boot"],
     },
     {
       category: "Databases",
@@ -192,19 +202,19 @@ const portfolioData = {
       items: ["SQL", "PostgreSQL", "SQLite"],
     },
     {
-      category: "Systems",
+      category: "Developer Tools",
       color: "#7d5e5e",
-      items: ["Linux", "Git", "GitHub"],
+      items: ["Linux", "Git", "GitHub", "Docker", "VS Code", "Jupyter Notebooks"],
     },
     {
-      category: "Technical",
-      color: "#3c6e71",
-      items: ["Data Structures and Algorithms", "Problem Solving", "Debugging", "Agile Methodology"],
+      category: "Fundamentals",
+      color: "#6f713c",
+      items: ["Data Structures and Algorithms", "Object-Oriented Programming", "Database Design"],
     },
     {
       category: "Soft Skills",
-      color: "#632857",
-      items: ["Team Collaboration", "Clear Communication", "Reliability", "Accountability", "Adaptability in Dynamic Environments"],
+      color: "#356328",
+      items: ["Team Collaboration", "Clear Communication", "Agile Methodology", "Problem-Solving", "Critical Thinking", "Adaptability", "Responsibility"],
     },
   ],
 
