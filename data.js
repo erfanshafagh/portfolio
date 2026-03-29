@@ -189,7 +189,7 @@ const portfolioData = {
     {
       category: "Domains",
       color: "#634328",
-      items: ["Fraud Detection", "Anomaly Detection", "Computer Vision", "Natural Language Processing", "Robotics", "Computer Graphics"],
+      items: ["Fraud Detection", "Anomaly Detection", "Computer Vision", "Natural Language Processing"],
     },
     {
       category: "Frameworks & Libraries",
