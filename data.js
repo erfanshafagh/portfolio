@@ -214,7 +214,7 @@ const portfolioData = {
     {
       category: "Soft Skills",
       color: "#356328",
-      items: ["Team Collaboration", "Clear Communication", "Agile Methodology", "Problem-Solving", "Critical Thinking", "Adaptability", "Responsibility"],
+      items: ["Team Collaboration", "Clear Communication", "Agile Methodology", "Problem-Solving"],
     },
   ],
 
