@@ -13,7 +13,7 @@
 
   --sidebar-w : 300px;
   --gap       : 18px;
-  --pad       : 35px;
+  --pad       : 20px;
   --nav-h     : 54px;
 
   --ease : cubic-bezier(0.4, 0, 0.2, 1);
@@ -114,7 +114,8 @@ body::after {
   grid-template-columns: var(--sidebar-w) 1fr;
   gap: var(--gap);
   height: 100vh;
-  padding: var(--pad);
+  padding-top: 5px;
+  padding-bottom: 35px;
   max-width: 1220px;
   margin: 0 auto;
 }
