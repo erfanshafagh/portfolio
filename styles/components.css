@@ -221,11 +221,11 @@ a.card-entity:hover {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  padding: 7px 12px;
+  padding: 6px 10px;
   border-radius: var(--r-pill);
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   font-weight: 500;
-  border: 1px solid var(--border);
+  border: 1px solid transparent;
   color: var(--text-3);
   background: transparent;
   cursor: pointer;
@@ -234,9 +234,15 @@ a.card-entity:hover {
     background var(--fast) var(--ease);
 }
 .collapse-toggle:hover {
-  color: var(--text-2);
-  border-color: var(--border-hi);
-  background: var(--bg-hover);
+  color: var(--accent2);
+  border-color: rgba(var(--accent2-rgb), 0.28);
+  background: rgba(var(--accent2-rgb), 0.08);
+}
+
+/* Pins the trigger to the end of its row so it aligns across sibling
+   cards rather than trailing whatever text precedes it. */
+.collapse-toggle--end {
+  margin-inline-start: auto;
 }
 .collapse-toggle .icon {
   inline-size: 12px;

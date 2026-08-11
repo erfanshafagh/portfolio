@@ -21,28 +21,40 @@ export function preferredTheme() {
   return window.matchMedia?.("(prefers-color-scheme: light)").matches ? "light" : "dark";
 }
 
-export function applyTheme(theme, button) {
+export function applyTheme(theme, buttons = []) {
   document.documentElement.setAttribute("data-theme", theme);
   try {
     localStorage.setItem(KEY, theme);
   } catch {
     /* ignore */
   }
-  if (button) {
-    const next = theme === "dark" ? "light" : "dark";
-    button.innerHTML = icon(theme === "dark" ? "sun" : "moon");
+  const next = theme === "dark" ? "light" : "dark";
+  for (const button of buttons) {
+    if (!button) continue;
+    button.innerHTML = icon(theme === "dark" ? "sun" : "moon") + (button.dataset.label ? `<span>${button.dataset.label}</span>` : "");
     button.setAttribute("aria-label", `Switch to ${next} theme`);
   }
 }
 
-/** Wire the toggle button and keep it in sync with the OS preference. */
-export function initTheme(button) {
-  applyTheme(preferredTheme(), button);
+/**
+ * Wire every theme toggle and keep them in sync with the OS preference.
+ *
+ * Takes a list because the desktop bar and the mobile "More" sheet each own
+ * one -- moving a single button between them would leave whichever layout is
+ * inactive without a control.
+ *
+ * @param {Array<HTMLElement|null>} buttons
+ */
+export function initTheme(buttons) {
+  const list = [].concat(buttons).filter(Boolean);
+  applyTheme(preferredTheme(), list);
 
-  button?.addEventListener("click", () => {
-    const now = document.documentElement.getAttribute("data-theme");
-    applyTheme(now === "dark" ? "light" : "dark", button);
-  });
+  for (const button of list) {
+    button.addEventListener("click", () => {
+      const now = document.documentElement.getAttribute("data-theme");
+      applyTheme(now === "dark" ? "light" : "dark", list);
+    });
+  }
 
   // Follow the OS only while the visitor has not made an explicit choice.
   window.matchMedia?.("(prefers-color-scheme: light)").addEventListener?.("change", (ev) => {
@@ -52,6 +64,6 @@ export function initTheme(button) {
     } catch {
       /* ignore */
     }
-    if (!explicit) applyTheme(ev.matches ? "light" : "dark", button);
+    if (!explicit) applyTheme(ev.matches ? "light" : "dark", list);
   });
 }

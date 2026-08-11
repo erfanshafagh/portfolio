@@ -45,6 +45,21 @@
    than 860px, so they used to get the fixed-100vh desktop grid and hid
    about 89% of the sidebar links behind an unreachable scroll region)
    and short laptop viewports. */
+/* ── Bottom navigation (phones only) ──
+   Tablets keep the top pill bar, which has room for a tidy four-column grid.
+   Landscape phones also keep it: they fall into the flowing layout via the
+   height clause below, but are too short to give up 58px to a fixed bar.
+   Breakpoint must match MOBILE in src/lib/bottomnav.js. */
+@media (max-width: 600px) {
+  .tab-bar {
+    display: none;
+  }
+
+  .bottom-nav {
+    display: grid;
+  }
+}
+
 @media (max-width: 860px), (max-height: 700px) {
   .layout {
     grid-template-columns: minmax(0, 1fr);
@@ -261,9 +276,19 @@
 /* "Publications" is the widest label: 70px of text plus 14px of padding and
    border needs 85px per column, so three columns stop fitting below a 337px
    viewport (76px of that goes to layout padding and the theme toggle).
-   Measured with the real DM Sans webfont at the 0.74rem phone size. */
+   Measured with the real DM Sans webfont at the 0.74rem phone size.
+   Only reachable in landscape, where the top bar is still in use. */
 @media (max-width: 336px) {
   .tab-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Last, so it survives the `padding` shorthands set by the blocks above:
+   reserve room for the fixed bar so the final card is never trapped
+   underneath it. */
+@media (max-width: 600px) {
+  .layout {
+    padding-block-end: calc(72px + env(safe-area-inset-bottom, 0px));
   }
 }

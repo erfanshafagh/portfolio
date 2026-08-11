@@ -1,5 +1,5 @@
 import { html, raw } from "../lib/dom.js";
-import { collapsible, linkPill, maybeLink, staticPill, timelineCard } from "../ui/components.js";
+import { collapseRegion, collapseToggle, linkPill, maybeLink, staticPill, timelineCard } from "../ui/components.js";
 
 export function render(data) {
   const items = data.publications.map(
@@ -30,11 +30,10 @@ export function render(data) {
               ${pills.map(raw)}
               ${abstract
                 ? raw(
-                    collapsible({
+                    collapseToggle({
                       id: `pub-abstract-${i}`,
                       labelClosed: "Abstract",
                       labelOpen: "Hide",
-                      content: html`<p class="pub-abstract">${abstract}</p>`,
                     })
                   )
                 : ""}
@@ -43,6 +42,14 @@ export function render(data) {
               ? raw(html`<ul class="tag-row tag-row--muted">${tags.map((t) => raw(html`<li class="tag">${t}</li>`))}</ul>`)
               : ""}
           </div>
+          ${abstract
+            ? raw(
+                collapseRegion({
+                  id: `pub-abstract-${i}`,
+                  content: html`<p class="pub-abstract">${abstract}</p>`,
+                })
+              )
+            : ""}
         `,
       });
     }

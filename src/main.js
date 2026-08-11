@@ -10,6 +10,7 @@
 
 import { portfolioData } from "./data.js";
 import { byId, html, raw, safeUrl } from "./lib/dom.js";
+import { initBottomNav, syncPanelRoles } from "./lib/bottomnav.js";
 import { initTabs } from "./lib/tabs.js";
 import { initTheme } from "./lib/theme.js";
 import { glyph, sectionHeader, wireCollapsibles } from "./ui/components.js";
@@ -94,21 +95,33 @@ function init() {
 
   renderSidebar(data);
   renderPanels(data, sections);
-  initTheme(byId("themeToggle"));
 
   const baseTitle = `${data.profile.name} — ${data.profile.role}`;
   document.title = baseTitle;
 
-  initTabs({
+  // Built before initTabs so the very first activation can already update it.
+  let tabs = null;
+  const bottomNav = initBottomNav({
+    sections,
+    onSelect: (id) => tabs.activate(id),
+  });
+
+  initTheme([byId("themeToggle"), bottomNav.themeToggle]);
+
+  tabs = initTabs({
     tablist: byId("tabList"),
     sections,
-    onChange: (id) => showPanel(id, sections),
+    onChange: (id) => {
+      showPanel(id, sections);
+      bottomNav.setActive(id);
+    },
     onTitle: (id) => {
       const s = sections.find((x) => x.id === id);
       document.title = s ? `${s.label} · ${baseTitle}` : baseTitle;
     },
   });
 
+  syncPanelRoles(sections);
   document.body.classList.add("ready");
 }
 

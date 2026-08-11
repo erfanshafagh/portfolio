@@ -73,19 +73,19 @@ export function maybeLink(text, href, className = "") {
 }
 
 /**
- * A collapsible region plus the button that controls it.
+ * The button half of a collapsible.
  *
- * Collapsed content is hidden with `visibility`, not just clipped to zero
- * height, so screen readers do not read out content that sighted users cannot
- * see. The animation uses `grid-template-rows` rather than a hardcoded
- * `max-height` ceiling, so long content can never be cut off mid-word.
+ * Kept separate from {@link collapseRegion} so the trigger can sit in a
+ * header row while the content it reveals lives in its own block below.
+ * Emitting both together forced the region to be a sibling of the trigger,
+ * which made it a flex item in the entity row and left dead space in the card.
  *
- * @param {{id: string, labelClosed: string, labelOpen: string, content: string}} opts
+ * @param {{id: string, labelClosed: string, labelOpen: string, className?: string}} opts
  */
-export function collapsible({ id, labelClosed, labelOpen, content }) {
+export function collapseToggle({ id, labelClosed, labelOpen, className = "" }) {
   return html`
     <button
-      class="collapse-toggle"
+      class="collapse-toggle ${className}"
       type="button"
       aria-expanded="false"
       aria-controls="${id}"
@@ -94,6 +94,21 @@ export function collapsible({ id, labelClosed, labelOpen, content }) {
     >
       <span class="collapse-toggle-text">${labelClosed}</span>${raw(icon("caret-down"))}
     </button>
+  `;
+}
+
+/**
+ * The content half of a collapsible.
+ *
+ * Collapsed content is hidden with `visibility`, not just clipped to zero
+ * height, so screen readers do not read out content that sighted users cannot
+ * see. The animation uses `grid-template-rows` rather than a hardcoded
+ * `max-height` ceiling, so long content can never be cut off mid-word.
+ *
+ * @param {{id: string, content: string}} opts
+ */
+export function collapseRegion({ id, content }) {
+  return html`
     <div class="collapse-region" id="${id}">
       <div class="collapse-region-inner">${raw(content)}</div>
     </div>

@@ -16,17 +16,22 @@ export const portfolioData = {
 
   /**
    * Nav order and labels. Remove an entry to hide that section entirely; the
-   * tab, the panel, and its routing all disappear together. `scroll: true`
-   * gives the panel its own scrollbar on desktop instead of clipping.
+   * tab, the panel, and its routing all disappear together.
+   *
+   *   scroll   the panel gets its own scrollbar on desktop instead of clipping
+   *   icon     glyph for the mobile bottom bar (see src/lib/icons.js)
+   *   short    label for the bottom bar, where a full label will not fit
+   *   primary  gets its own slot in the mobile bottom bar; everything else
+   *            goes behind "More". Keep this to four or the bar gets cramped.
    */
   sections: [
-    { id: "about",        label: "About Me",     eyebrow: "Introduction",         heading: "Hi, I'm Erfan", scroll: true },
-    { id: "education",    label: "Education",    eyebrow: "Academic Background",  heading: "Education",     scroll: true },
-    { id: "experience",   label: "Experience",   eyebrow: "Work History",         heading: "Experience",    scroll: true },
-    { id: "projects",     label: "Projects",     eyebrow: "Selected Work",        heading: "Projects"                    },
-    { id: "skills",       label: "Skills",       eyebrow: "Technical Proficiency", heading: "Skills",       scroll: true },
-    { id: "publications", label: "Publications", eyebrow: "Research & Writing",   heading: "Publications",  scroll: true },
-    { id: "contact",      label: "Contact",      eyebrow: "Get In Touch",         heading: "Contact Me",    scroll: true },
+    { id: "about",        label: "About Me",     short: "About",    icon: "user",           primary: true, eyebrow: "Introduction",          heading: "Hi, I'm Erfan", scroll: true },
+    { id: "education",    label: "Education",    short: "Education", icon: "graduation-cap",                eyebrow: "Academic Background",   heading: "Education",     scroll: true },
+    { id: "experience",   label: "Experience",   short: "Work",     icon: "briefcase",      primary: true, eyebrow: "Work History",          heading: "Experience",    scroll: true },
+    { id: "projects",     label: "Projects",     short: "Projects", icon: "squares-four",   primary: true, eyebrow: "Selected Work",         heading: "Projects"                    },
+    { id: "skills",       label: "Skills",       short: "Skills",   icon: "wrench",                        eyebrow: "Technical Proficiency", heading: "Skills",        scroll: true },
+    { id: "publications", label: "Publications", short: "Research", icon: "article",        primary: true, eyebrow: "Research & Writing",    heading: "Publications",  scroll: true },
+    { id: "contact",      label: "Contact",      short: "Contact",  icon: "envelope",                      eyebrow: "Get In Touch",          heading: "Contact Me",    scroll: true },
   ],
 
   profile: {
