@@ -139,8 +139,53 @@ if (from === -1 || to === -1) {
   throw new Error(`index.html is missing the ${START} / ${END} markers`);
 }
 
-const out = src.slice(0, from) + block.trimStart() + src.slice(to + END.length);
+let out = src.slice(0, from) + block.trimStart() + src.slice(to + END.length);
+
+/* ── Keep the head in sync with data.js ──
+   The description appears in four places and the research list in one more.
+   Rewriting them from the same source is the only way they stay consistent
+   as the research focus changes. */
+const tagline = d.profile.tagline ?? "";
+const withName = `${d.profile.name} — ${tagline}`;
+
+const setMeta = (attr, name, value) => {
+  const re = new RegExp(`(<meta\\s+${attr}="${name}"[^>]*?content=")[^"]*(")`, "i");
+  if (!re.test(out)) {
+    console.warn(`  ! no ${attr}="${name}" tag to update`);
+    return;
+  }
+  out = out.replace(re, `$1${escAttr(value)}$2`);
+};
+
+setMeta("name", "description", withName);
+setMeta("property", "og:description", tagline);
+setMeta("name", "twitter:description", tagline);
+
+// Multi-line <meta> tags (prettier wraps long ones) need a looser pattern.
+out = out.replace(
+  /(<meta\s+name="description"[\s\S]*?content=")[\s\S]*?(")/i,
+  `$1${escAttr(withName)}$2`
+);
+
+// JSON-LD description + knowsAbout
+out = out.replace(
+  /("description":\s*")[^"]*(")/,
+  `$1${escAttr(withName)}$2`
+);
+if (Array.isArray(d.profile.researchAreas)) {
+  out = out.replace(
+    /("knowsAbout":\s*)\[[^\]]*\]/,
+    `$1${JSON.stringify(d.profile.researchAreas)}`
+  );
+}
+
 await writeFile(file, out, "utf8");
 
+function escAttr(s) {
+  return String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+}
+
 const words = block.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
-console.log(`index.html prerender block updated — ${parts.length} sections, ~${words} indexable words`);
+console.log(
+  `index.html updated — ${parts.length} sections, ~${words} indexable words, head description + knowsAbout synced`
+);

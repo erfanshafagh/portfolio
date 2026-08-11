@@ -39,9 +39,27 @@ export const portfolioData = {
     role: "Machine Learning Researcher",
     location: "Burnaby, BC, Canada",
     avatar: "assets/img/avatar.webp",
-    /** Used for the meta description and social share cards. */
+    /**
+     * Source of truth for the meta description, Open Graph and Twitter card
+     * text. `node build.js` writes it into index.html so the head cannot
+     * drift from this file.
+     */
     tagline:
-      "Machine Learning Researcher and Computer Science graduate student at Simon Fraser University, working on fraud detection, weak supervision, anomaly detection, and large language models.",
+      "Machine Learning Researcher and Computer Science graduate student at Simon Fraser University, working on LLM-based and commit-level vulnerability detection, automated vulnerability patching, and agentic program analysis.",
+
+    /** Drives the JSON-LD `knowsAbout` list, also written by build.js. */
+    researchAreas: [
+      "LLM-Based Vulnerability Detection",
+      "Commit-Level Vulnerability Detection",
+      "Automated Vulnerability Patching",
+      "Agentic Graph-Based Program Analysis",
+      "Adversarial Machine Learning",
+      "Software Security",
+      "Fraud Detection",
+      "Weak Supervision",
+      "Anomaly Detection",
+      "Large Language Models",
+    ],
     links: [
       { label: "esa104@sfu.ca",                 href: "mailto:esa104@sfu.ca",                       icon: "email"     },
       { label: "linkedin.com/in/erfan-shafagh", href: "https://www.linkedin.com/in/erfan-shafagh/", icon: "linkedin"  },
@@ -54,7 +72,7 @@ export const portfolioData = {
 
   about: {
     bio: [
-      "I'm a Machine Learning Researcher and Computer Science graduate student at Simon Fraser University, with a strong academic record and a focus on fraud detection, weak supervision, anomaly detection, and large language models.",
+      "I'm a Machine Learning Researcher and Computer Science graduate student at Simon Fraser University, with a strong academic record. My current research sits at the intersection of large language models and software security: LLM-based and commit-level vulnerability detection, automated vulnerability patching, and agentic graph-based program analysis. This builds on earlier work in fraud detection, weak supervision, and anomaly detection.",
       "My research spans the full cycle, from problem formulation and dataset engineering to model development, experimentation, and publication. I enjoy working at the intersection of theory and real-world application, building ML systems that are robust, interpretable, and deployable. I'm passionate about graduate research, open-source contribution, and tackling complex problems with principled data-driven approaches.",
       "Outside the lab, I like building things just for the fun of it, especially small ideas that turn into something real. I spend time experimenting with web designs, tweaking my portfolio, or exploring random project ideas that catch my interest. I also enjoy staying up to date with new tech, particularly in AI trends.",
       "When I'm not coding, I watch movies like Inception and Interstellar (don't ask how many times I've rewatched them), and play games like Counter-Strike (definitely not a pro). I'm usually exploring new tools (mostly just clicking around to see what happens), watching tech content (and occasionally getting distracted by memes), and trying to stay consistent with the gym (don't ask if I actually am). I also like sketching out random ideas (they rarely make sense), listening to music while coding (sometimes too loudly), and attempting to cook new recipes (results may vary). Feel free to check out my website and stay in touch! \u{1F642}",
@@ -82,8 +100,8 @@ export const portfolioData = {
       website: "https://www.sfu.ca/",
       year: "May 2026 – Present",
       description:
-        "Graduate studies in Computer Science with a research focus on machine learning, fraud detection, weak supervision, and anomaly detection.",
-      gpa: null,
+        "Graduate studies in Computer Science with a research focus on LLM-based vulnerability detection, commit-level vulnerability detection, automated vulnerability patching, and agentic graph-based program analysis.",
+      gpa: "4.0",
     },
     {
       degree: "Bachelor of Computer Science",
@@ -108,6 +126,29 @@ export const portfolioData = {
         "Conducted research in fraud detection using weak supervision and anomaly detection methods.",
         "Applied deep learning methods to real-world, high-dimensional datasets.",
         "Collaborated in an academic research setting, contributing to publications and interdisciplinary teamwork.",
+      ],
+    },
+    {
+      title: "AI Engineer Intern",
+      company: "Farpoint Technologies",
+      website: null,
+      period: "May 2026 – Present",
+      location: "Remote",
+      highlights: [
+        "Contributed to Fabric, a secure and private AI assistant built as an agentic harness around large language models.",
+        "Designed and shipped core product features, including streaming reasoning components, onboarding flows, and file search.",
+        "Diagnosed and resolved cross-platform bugs spanning encoding, rendering, and WSL environments.",
+      ],
+    },
+    {
+      title: "Teaching Assistant",
+      company: "Simon Fraser University – CMPT 125",
+      website: "https://www.sfu.ca/",
+      period: "May 2026 – Present",
+      location: "Burnaby, BC",
+      highlights: [
+        "Led lab sections and office hours, guiding students through core programming concepts, data structures, and algorithm design in C.",
+        "Graded assignments and exams, providing detailed feedback to help students strengthen their problem-solving skills.",
       ],
     },
     {
@@ -163,6 +204,15 @@ export const portfolioData = {
       image: "assets/img/cleaning-robot.webp",
     },
     {
+      name: "Aerial Image Instance Segmentation",
+      tagline: "Detectron2 segmentation at scale",
+      description:
+        "Built an instance segmentation pipeline for high-resolution aerial imagery using PyTorch and Detectron2. Handled large-scale data with custom loaders, block-based image tiling, and augmentations, fine-tuned a Faster R-CNN model to localize aerial objects, and engineered a custom encoder-decoder network with skip connections for precise pixel-level masking, optimizing against Intersection-over-Union.",
+      tags: ["PyTorch", "Detectron2", "Computer Vision", "Python"],
+      links: { live: null, github: null },
+      image: null,
+    },
+    {
       name: "AI Lyric Generation",
       tagline: "Fine-tuned GPT-2 for song lyrics",
       description:
@@ -181,6 +231,15 @@ export const portfolioData = {
       image: "assets/img/urban-exploration.webp",
     },
     {
+      name: "Optical Character Recognition System",
+      tagline: "CNN written from scratch in NumPy",
+      description:
+        "Implemented a convolutional neural network from scratch in NumPy, writing the forward and backward passes by hand, and built an OCR pipeline with OpenCV to segment, extract, and classify handwritten digits. Reached over 95% test accuracy on MNIST and visualized intermediate feature maps to show how the convolutional and ReLU layers pick out edges.",
+      tags: ["NumPy", "OpenCV", "CNN", "Computer Vision", "Python"],
+      links: { live: null, github: null },
+      image: null,
+    },
+    {
       name: "Cinepass",
       tagline: "Movie reservation web app",
       description:
@@ -188,6 +247,15 @@ export const portfolioData = {
       tags: ["Java", "Spring Boot", "PostgreSQL", "Agile"],
       links: { live: null, github: null },
       image: "assets/img/cinepass.webp",
+    },
+    {
+      name: "Movie Title Generator",
+      tagline: "Generative MLP built from the ground up",
+      description:
+        "Built a generative multilayer perceptron from the ground up to produce novel movie titles learned purely from data. Trained the model in PyTorch with CUDA GPU acceleration for hands-on intuition into the full deep learning training loop, and preprocessed a real-world movie title dataset for character-level generation.",
+      tags: ["PyTorch", "Deep Learning", "Python"],
+      links: { live: null, github: null },
+      image: null,
     },
     {
       name: "Database Management System",
@@ -226,12 +294,12 @@ export const portfolioData = {
   skills: [
     { category: "Languages",              hue: 210, items: ["Python", "C++", "C", "Java"] },
     { category: "Learning Paradigms",     hue: 295, items: ["Supervised Learning", "Unsupervised Learning", "Semi-supervised Learning", "Self-supervised Learning", "Reinforcement Learning"] },
-    { category: "Domains",                hue:  32, items: ["Fraud Detection", "Anomaly Detection", "Computer Vision", "Natural Language Processing"] },
-    { category: "Frameworks & Libraries", hue: 183, items: ["PyTorch", "Scikit-learn", "NumPy", "Pandas", "Matplotlib", "Hugging Face", "ROS2", "Spring Boot"] },
+    { category: "Domains",                hue:  32, items: ["Software Security", "Vulnerability Detection", "Fraud Detection", "Anomaly Detection", "Computer Vision", "Natural Language Processing"] },
+    { category: "Frameworks & Libraries", hue: 183, items: ["PyTorch", "Scikit-learn", "NumPy", "Pandas", "Matplotlib", "Hugging Face", "JAX", "OpenCV", "Detectron2", "ROS2", "Spring Boot"] },
     { category: "Databases",              hue: 135, items: ["SQL", "PostgreSQL", "SQLite"] },
-    { category: "Developer Tools",        hue:   5, items: ["Linux", "Git", "GitHub", "Docker", "VS Code", "Jupyter Notebooks"] },
+    { category: "Developer Tools",        hue:   5, items: ["Linux", "Git", "GitHub", "Docker", "VS Code", "Jupyter Notebooks", "Google Colab", "Kaggle"] },
     { category: "Fundamentals",           hue:  50, items: ["Data Structures and Algorithms", "Object-Oriented Programming", "Database Design"] },
-    { category: "Soft Skills",            hue:  96, items: ["Team Collaboration", "Clear Communication", "Agile Methodology", "Problem-Solving"] },
+    { category: "Soft Skills",            hue:  96, items: ["Team Collaboration", "Clear Communication", "Reliability", "Accountability", "Agile Methodology", "Problem-Solving"] },
   ],
 
   publications: [

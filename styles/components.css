@@ -100,11 +100,16 @@
   flex-wrap: wrap;
 }
 
+/* Accent colour is reserved for entities that actually link somewhere, so a
+   company with no website does not read as a dead link. */
 .card-entity {
   font-size: 0.79rem;
-  color: var(--accent2);
+  color: var(--text-2);
   font-weight: 500;
   text-decoration: none;
+}
+a.card-entity {
+  color: var(--accent2);
 }
 a.card-entity:hover {
   text-decoration: underline;
