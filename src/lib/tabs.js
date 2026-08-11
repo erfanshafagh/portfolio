@@ -17,9 +17,8 @@ const STORE_KEY = "activeTab";
  * @param {HTMLElement} opts.tablist  container that owns role="tablist"
  * @param {Array<{id: string, label: string}>} opts.sections
  * @param {(id: string) => void} opts.onChange
- * @param {(id: string) => void} [opts.onTitle]
  */
-export function initTabs({ tablist, sections, onChange, onTitle }) {
+export function initTabs({ tablist, sections, onChange }) {
   const ids = sections.map((s) => s.id);
   let current = null;
 
@@ -55,7 +54,6 @@ export function initTabs({ tablist, sections, onChange, onTitle }) {
     });
 
     onChange(id);
-    onTitle?.(id);
 
     try {
       sessionStorage.setItem(STORE_KEY, id);

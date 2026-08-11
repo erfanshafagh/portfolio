@@ -59,13 +59,14 @@ export function render(data) {
 }
 
 /** Markup for a single project's detail pane. */
-function detail({ name, tagline, description, tags = [], links = {}, image }) {
+function detail({ name, tagline, description, tags = [], links = {}, image, imageCredit }) {
   const pills = [
     linkPill({ href: links.live, label: "Live Demo", icon: "external" }),
     linkPill({ href: links.github, label: "Source Code", icon: "github" }),
   ].filter(Boolean);
 
   const img = safeUrl(image);
+  const creditHref = imageCredit?.href ? safeUrl(imageCredit.href) : "";
 
   return html`
     <div class="md-detail-header">
@@ -74,15 +75,24 @@ function detail({ name, tagline, description, tags = [], links = {}, image }) {
         <p class="md-detail-tagline">${tagline}</p>
       </div>
       ${img
-        ? raw(html`<img
-            class="md-detail-img"
-            src="${raw(img)}"
-            alt=""
-            width="260"
-            height="164"
-            loading="lazy"
-            decoding="async"
-          />`)
+        ? raw(html`<figure class="md-detail-figure">
+            <img
+              class="md-detail-img"
+              src="${raw(img)}"
+              alt=""
+              width="260"
+              height="164"
+              loading="lazy"
+              decoding="async"
+            />
+            ${imageCredit
+              ? raw(html`<figcaption class="md-detail-credit">
+                  ${creditHref
+                    ? raw(html`<a href="${raw(creditHref)}" target="_blank" rel="noopener noreferrer">${imageCredit.text}</a>`)
+                    : imageCredit.text}
+                </figcaption>`)
+              : ""}
+          </figure>`)
         : ""}
     </div>
     <p class="md-detail-desc">${description}</p>

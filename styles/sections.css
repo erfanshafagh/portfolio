@@ -185,6 +185,13 @@
   margin-block-end: 14px;
 }
 
+.md-detail-figure {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-inline-size: 0;
+}
+
 .md-detail-img {
   inline-size: 100%;
   block-size: auto;
@@ -193,6 +200,23 @@
   object-fit: cover;
   border: 1px solid var(--border);
   background: var(--bg-tag);
+}
+
+/* Attribution for images whose licence requires it. Deliberately quiet, but
+   present -- CC BY is not satisfied by a credit buried in the source. */
+.md-detail-credit {
+  font-size: 0.6rem;
+  line-height: 1.35;
+  color: var(--text-3);
+}
+.md-detail-credit a {
+  color: inherit;
+  text-decoration: none;
+}
+.md-detail-credit a:hover {
+  color: var(--accent2);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .md-detail-name {

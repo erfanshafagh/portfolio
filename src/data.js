@@ -131,7 +131,7 @@ export const portfolioData = {
     {
       title: "AI Engineer Intern",
       company: "Farpoint Technologies",
-      website: null,
+      website: "https://farpointhq.com",
       period: "May 2026 – Present",
       location: "Remote",
       highlights: [
@@ -210,7 +210,12 @@ export const portfolioData = {
         "Built an instance segmentation pipeline for high-resolution aerial imagery using PyTorch and Detectron2. Handled large-scale data with custom loaders, block-based image tiling, and augmentations, fine-tuned a Faster R-CNN model to localize aerial objects, and engineered a custom encoder-decoder network with skip connections for precise pixel-level masking, optimizing against Intersection-over-Union.",
       tags: ["PyTorch", "Detectron2", "Computer Vision", "Python"],
       links: { live: null, github: null },
-      image: null,
+      image: "assets/img/aerial-segmentation.webp",
+      // CC BY 4.0 requires visible credit, so this renders under the image.
+      imageCredit: {
+        text: "Aerial imagery: Land Information New Zealand, CC BY 4.0",
+        href: "https://commons.wikimedia.org/wiki/File:Auckland_International_Airport_2017_aerial.png",
+      },
     },
     {
       name: "AI Lyric Generation",
@@ -237,7 +242,8 @@ export const portfolioData = {
         "Implemented a convolutional neural network from scratch in NumPy, writing the forward and backward passes by hand, and built an OCR pipeline with OpenCV to segment, extract, and classify handwritten digits. Reached over 95% test accuracy on MNIST and visualized intermediate feature maps to show how the convolutional and ReLU layers pick out edges.",
       tags: ["NumPy", "OpenCV", "CNN", "Computer Vision", "Python"],
       links: { live: null, github: null },
-      image: null,
+      // CC0, no attribution required.
+      image: "assets/img/ocr-mnist.webp",
     },
     {
       name: "Cinepass",
@@ -255,7 +261,8 @@ export const portfolioData = {
         "Built a generative multilayer perceptron from the ground up to produce novel movie titles learned purely from data. Trained the model in PyTorch with CUDA GPU acceleration for hands-on intuition into the full deep learning training loop, and preprocessed a real-world movie title dataset for character-level generation.",
       tags: ["PyTorch", "Deep Learning", "Python"],
       links: { live: null, github: null },
-      image: null,
+      // Pexels License (Tima Miroshnichenko), no attribution required.
+      image: "assets/img/movie-title-generator.webp",
     },
     {
       name: "Database Management System",

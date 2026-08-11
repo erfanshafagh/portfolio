@@ -96,8 +96,7 @@ function init() {
   renderSidebar(data);
   renderPanels(data, sections);
 
-  const baseTitle = `${data.profile.name} — ${data.profile.role}`;
-  document.title = baseTitle;
+  document.title = data.profile.name;
 
   // Built before initTabs so the very first activation can already update it.
   let tabs = null;
@@ -114,10 +113,6 @@ function init() {
     onChange: (id) => {
       showPanel(id, sections);
       bottomNav.setActive(id);
-    },
-    onTitle: (id) => {
-      const s = sections.find((x) => x.id === id);
-      document.title = s ? `${s.label} · ${baseTitle}` : baseTitle;
     },
   });
 
