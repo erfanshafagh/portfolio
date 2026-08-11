@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://erfanshafagh.github.io/sitemap.xml

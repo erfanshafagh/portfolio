@@ -60,14 +60,18 @@ export const portfolioData = {
       "When I'm not coding, I watch movies like Inception and Interstellar (don't ask how many times I've rewatched them), and play games like Counter-Strike (definitely not a pro). I'm usually exploring new tools (mostly just clicking around to see what happens), watching tech content (and occasionally getting distracted by memes), and trying to stay consistent with the gym (don't ask if I actually am). I also like sketching out random ideas (they rarely make sense), listening to music while coding (sometimes too loudly), and attempting to cook new recipes (results may vary). Feel free to check out my website and stay in touch! \u{1F642}",
     ],
     /**
-     * `value: null` derives the count from the data below, so these can never
-     * drift out of sync with what the site actually lists.
+     * Every stat is derived, so none of them can drift out of sync with the
+     * rest of this file.
+     *
+     *   count:"projects"  number of entries in that collection
+     *   yearsSince:"..."  whole years elapsed, rounded down, with a "+"
+     *   latestGpa         gpa of the most recent education entry that has one
      */
     stats: [
-      { value: null, from: "publications", suffix: "",  label: "Publications" },
-      { value: null, from: "projects",     suffix: "",  label: "Projects"     },
-      { value: "3+",                                    label: "Years Coding" },
-      { value: "3.46",                                  label: "GPA"          },
+      { count: "publications",     label: "Publications" },
+      { count: "projects",         label: "Projects"     },
+      { yearsSince: "2023-01",     label: "Years Coding" },
+      { latestGpa: true,           label: "GPA"          },
     ],
   },
 
