@@ -1,0 +1,269 @@
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE
+   Ordered narrowest-last. The important change from the previous
+   stylesheet is that the flowing layout is gated on viewport
+   HEIGHT as well as width -- see the 860px/700px block.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Wrap the tab bar before labels start truncating ──
+   Seven labels plus the toggle need roughly 700px of main column.
+   Below ~1000px viewport they no longer fit on one row, and the old
+   single-row-until-860px rule meant six of seven tabs rendered as
+   "Educa…", "Experi…", "Public…" across the whole band. */
+@media (max-width: 1000px) {
+  .tab-bar {
+    border-radius: var(--r-lg);
+  }
+  /* An explicit grid rather than flex-wrap with percentage bases: the
+     percentages resolved against a width the toggle was still competing
+     for, which produced ragged 2-per-row output and a 197px-tall nav. */
+  .tab-list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 3px;
+  }
+  .tab {
+    inline-size: 100%;
+  }
+  .nav-separator {
+    display: none;
+  }
+
+  /* The main column is narrow enough here that a side-by-side thumbnail
+     leaves the project title wrapping in a ~160px gutter. Stack instead. */
+  .md-detail-header {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .md-detail-img {
+    aspect-ratio: 16 / 7;
+  }
+}
+
+/* ── Flowing layout ──
+   Triggered by narrow width OR short height. The height clause is what
+   rescues landscape phones (896x414, 926x428, 932x430 are all wider
+   than 860px, so they used to get the fixed-100vh desktop grid and hid
+   about 89% of the sidebar links behind an unreachable scroll region)
+   and short laptop viewports. */
+@media (max-width: 860px), (max-height: 700px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    block-size: auto;
+    min-block-size: 100vh;
+    min-block-size: 100dvh;
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .sidebar {
+    block-size: auto;
+  }
+  .sidebar-inner {
+    padding: 26px 22px;
+    overflow: visible;
+  }
+
+  /* Panels stop being fixed-height boxes; the page scrolls instead, so
+     no panel needs its own nested scroll region. */
+  .panel-container {
+    flex: none;
+    block-size: auto;
+    min-block-size: 0;
+  }
+  .panel {
+    block-size: auto;
+    overflow: visible;
+  }
+  .panel--scroll,
+  .panel-scroll {
+    overflow: visible;
+    block-size: auto;
+    flex: none;
+    padding-inline-end: 0;
+  }
+
+  .master-detail {
+    grid-template-columns: minmax(0, 1fr);
+    flex: none;
+    block-size: auto;
+  }
+  .md-detail {
+    overflow: visible;
+    block-size: auto;
+  }
+  /* A capped vertical list reads better than the old horizontal
+     scroller, which pushed ~86% of the projects off-screen behind a
+     barely-visible 4px scrollbar. */
+  .md-list {
+    max-block-size: 244px;
+  }
+
+  .contact-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .contact-socials {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .skill-band {
+    grid-template-columns: 108px minmax(0, 1fr);
+  }
+}
+
+/* ── Landscape phones ──
+   Side by side is still the better use of a short, wide screen; only
+   the fixed height had to go. */
+@media (max-height: 700px) and (min-width: 861px) {
+  .layout {
+    grid-template-columns: var(--sidebar-w) minmax(0, 1fr);
+  }
+}
+
+/* ── Touch devices ──
+   Keyed off pointer type rather than width, so a large tablet gets
+   proper targets too. The 18px "Show more" button was the only way to
+   reach any job highlight on a phone. */
+@media (pointer: coarse) {
+  .collapse-toggle,
+  .pill,
+  .tab,
+  .md-item,
+  .theme-toggle,
+  .md-filter {
+    min-block-size: var(--tap);
+  }
+  .collapse-toggle,
+  .pill {
+    padding-block: 11px;
+  }
+  .tab {
+    block-size: var(--tap);
+  }
+  .theme-toggle {
+    inline-size: var(--tap);
+  }
+}
+
+/* ── No hover ──
+   Every category colour and most card affordances were hover-gated, so
+   touch users saw a uniformly grey page. Show them by default instead. */
+@media (hover: none) {
+  .skill-band::before {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  .skill-band .skill-band-name {
+    color: var(--cat-color);
+  }
+  .skill-band .skill-chip {
+    border-color: var(--border-hi);
+  }
+}
+
+/* ── Phone ── */
+@media (max-width: 540px) {
+  .layout {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .tab-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .tab {
+    font-size: 0.74rem;
+    padding: 0 6px;
+  }
+
+  .panel {
+    padding: 18px 16px;
+  }
+  .section-heading {
+    font-size: 1.5rem;
+  }
+  .profile-name {
+    font-size: 1.5rem;
+  }
+  .sidebar-inner {
+    padding: 20px 16px;
+  }
+
+  .md-detail {
+    padding: 18px 16px;
+  }
+  .md-detail-header {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .md-detail-img {
+    aspect-ratio: 16 / 7;
+  }
+
+  .contact-card,
+  .contact-form {
+    padding: 18px 16px;
+  }
+  .form-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .skill-band {
+    grid-template-columns: 88px minmax(0, 1fr);
+  }
+
+  .stats-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ── Small phone ── */
+@media (max-width: 380px) {
+  .layout {
+    padding: 8px;
+    gap: 8px;
+  }
+  .panel {
+    padding: 16px 13px;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .card-title {
+    font-size: 0.9rem;
+  }
+
+  /* Label stacks above its chips rather than fighting for a 80px column. */
+  .skill-band {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .skill-band-name {
+    padding: 12px 14px 6px;
+  }
+  .skill-chips {
+    padding: 0 14px 14px;
+  }
+
+  .profile-name {
+    font-size: 1.35rem;
+  }
+  .section-heading {
+    font-size: 1.3rem;
+  }
+  .avatar-ring {
+    inline-size: 116px;
+    block-size: 116px;
+  }
+}
+
+/* "Publications" is the widest label: 70px of text plus 14px of padding and
+   border needs 85px per column, so three columns stop fitting below a 337px
+   viewport (76px of that goes to layout padding and the theme toggle).
+   Measured with the real DM Sans webfont at the 0.74rem phone size. */
+@media (max-width: 336px) {
+  .tab-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

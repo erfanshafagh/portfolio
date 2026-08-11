@@ -1,0 +1,322 @@
+/* ═══════════════════════════════════════════════════════════════
+   SHELL: page grid, sidebar, nav, panel container
+   ═══════════════════════════════════════════════════════════════ */
+
+.layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: var(--sidebar-w) minmax(0, 1fr);
+  gap: var(--gap);
+  padding: var(--pad);
+  max-inline-size: 1220px;
+  margin-inline: auto;
+
+  /* dvh tracks the mobile URL bar; vh is the fallback for older engines. */
+  block-size: 100vh;
+  block-size: 100dvh;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  min-block-size: 0;
+  transition: background var(--slow) var(--ease), border-color var(--slow) var(--ease);
+}
+
+/* Scrolls rather than clipping: the content stack needs ~666px, so on any
+   viewport under roughly 707px tall the old overflow:hidden silently cut
+   off the lower profile links with no way to reach them. */
+.sidebar-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 28px 26px;
+  flex: 1;
+  min-block-size: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.avatar-ring {
+  inline-size: 138px;
+  block-size: 138px;
+  border-radius: 50%;
+  padding: 3px;
+  background: linear-gradient(135deg, var(--accent) 0%, transparent 65%);
+  box-shadow: 0 0 0 1px var(--border), 0 0 32px rgba(var(--accent-rgb), 0.2);
+  margin-block-end: 20px;
+  flex-shrink: 0;
+  transition: box-shadow var(--base) var(--ease);
+}
+.avatar-ring:hover {
+  box-shadow: 0 0 0 2px var(--accent), 0 0 40px rgba(var(--accent-rgb), 0.28);
+}
+
+.avatar {
+  inline-size: 100%;
+  block-size: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  background: var(--bg-card-alt);
+}
+
+.profile-name {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-block-end: 7px;
+}
+
+.profile-role {
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--accent2);
+  margin-block-end: 24px;
+}
+
+.profile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  inline-size: 100%;
+  max-inline-size: 340px;
+  padding-block-start: 16px;
+  border-block-start: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.profile-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  min-block-size: var(--tap);
+  border-radius: var(--r-md);
+  text-decoration: none;
+  color: var(--text-2);
+  font-size: 0.85rem;
+  border: 1px solid var(--border);
+  background: var(--bg-card-alt);
+  transition: color var(--fast) var(--ease), background var(--fast) var(--ease),
+    border-color var(--fast) var(--ease), box-shadow var(--fast) var(--ease),
+    transform var(--fast) var(--ease);
+}
+.profile-link span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.profile-link .icon {
+  font-size: 17px;
+  color: var(--text-3);
+  transition: color var(--fast) var(--ease);
+}
+.profile-link:hover {
+  color: var(--accent2);
+  background: rgba(var(--accent2-rgb), 0.08);
+  border-color: rgba(var(--accent2-rgb), 0.22);
+  box-shadow: 0 0 10px rgba(var(--accent2-rgb), 0.13);
+  transform: translateX(3px);
+}
+.profile-link:hover .icon {
+  color: var(--accent2);
+}
+.profile-link--static {
+  cursor: default;
+}
+.profile-link--static:hover {
+  transform: none;
+}
+
+/* ── Main column ── */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  min-inline-size: 0;
+  min-block-size: 0;
+}
+
+/* ── Tab bar ── */
+.tab-bar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  padding: 5px;
+  border-radius: var(--r-pill);
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border: 1px solid var(--glass-bdr);
+  box-shadow: var(--shadow-nav);
+  transition: background var(--slow) var(--ease), border-color var(--slow) var(--ease);
+}
+
+/* Only the tabs live in the tablist; the theme toggle is a sibling so it
+   is not announced as an eighth tab. */
+.tab-list {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex: 1;
+  min-inline-size: 0;
+}
+
+.tab {
+  flex: 1;
+  min-inline-size: 0;
+  block-size: 42px;
+  padding: 0 8px;
+  border-radius: var(--r-pill);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-2);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color var(--fast) var(--ease), background var(--fast) var(--ease),
+    border-color var(--fast) var(--ease), box-shadow var(--fast) var(--ease);
+}
+
+.tab:hover:not(.active) {
+  color: var(--accent2);
+  background: rgba(var(--accent2-rgb), 0.08);
+  border-color: rgba(var(--accent2-rgb), 0.2);
+  box-shadow: 0 0 12px rgba(var(--accent2-rgb), 0.14);
+}
+
+.tab.active {
+  color: var(--text-1);
+  background: rgba(var(--accent-rgb), 0.16);
+  border-color: rgba(var(--accent-rgb), 0.42);
+  box-shadow: 0 0 18px rgba(var(--accent-rgb), 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+.nav-separator {
+  inline-size: 1px;
+  block-size: 20px;
+  background: var(--border-hi);
+  flex-shrink: 0;
+  margin-inline: 2px;
+}
+
+.theme-toggle {
+  block-size: 42px;
+  inline-size: 42px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: var(--r-pill);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: color var(--fast) var(--ease), background var(--fast) var(--ease),
+    border-color var(--fast) var(--ease), box-shadow var(--fast) var(--ease);
+}
+.theme-toggle .icon {
+  inline-size: 18px;
+  block-size: 18px;
+  transition: transform 320ms var(--ease);
+}
+.theme-toggle:hover {
+  color: var(--accent2);
+  background: rgba(var(--accent2-rgb), 0.08);
+  border-color: rgba(var(--accent2-rgb), 0.22);
+  box-shadow: 0 0 12px rgba(var(--accent2-rgb), 0.18);
+}
+.theme-toggle:hover .icon {
+  transform: rotate(28deg) scale(1.15);
+}
+
+/* ── Panels ── */
+.panel-container {
+  flex: 1;
+  min-block-size: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  position: relative;
+  transition: background var(--slow) var(--ease), border-color var(--slow) var(--ease);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  block-size: 100%;
+  overflow: hidden;
+  padding: 28px 34px;
+}
+
+/* [hidden] must beat display:flex. */
+.panel[hidden] {
+  display: none;
+}
+
+.panel.entering {
+  animation: panelIn var(--base) var(--ease) both;
+}
+
+/* Opt-in scrolling. Replaces five per-section #panel-* rules plus a
+   matching list in the mobile query, so a new section needs no CSS. */
+.panel--scroll,
+.panel-scroll {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.panel-scroll {
+  flex: 1;
+  min-block-size: 0;
+  padding-inline-end: 4px;
+}
+
+@keyframes panelIn {
+  from {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-eyebrow {
+  font-size: 0.67rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent2);
+  margin-block-end: 4px;
+  flex-shrink: 0;
+}
+
+.section-heading {
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+  margin-block-end: 20px;
+  flex-shrink: 0;
+}

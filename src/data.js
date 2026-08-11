@@ -1,0 +1,259 @@
+/**
+ * Single source of truth for everything the site displays.
+ *
+ * Editing this file is the only thing needed to change content, add a project,
+ * reorder the nav, or hide a whole section. The one exception is adding a brand
+ * new *kind* of section, which also needs a renderer in src/sections/.
+ *
+ * After editing, run `node build.js` to refresh the pre-rendered HTML that
+ * search engines and link-preview crawlers read. The live site is correct
+ * either way -- the build only keeps the crawler snapshot in sync.
+ */
+
+export const portfolioData = {
+  /** Absolute site URL, used for canonical + Open Graph tags. */
+  siteUrl: "https://erfanshafagh.github.io/",
+
+  /**
+   * Nav order and labels. Remove an entry to hide that section entirely; the
+   * tab, the panel, and its routing all disappear together. `scroll: true`
+   * gives the panel its own scrollbar on desktop instead of clipping.
+   */
+  sections: [
+    { id: "about",        label: "About Me",     eyebrow: "Introduction",         heading: "Hi, I'm Erfan", scroll: true },
+    { id: "education",    label: "Education",    eyebrow: "Academic Background",  heading: "Education",     scroll: true },
+    { id: "experience",   label: "Experience",   eyebrow: "Work History",         heading: "Experience",    scroll: true },
+    { id: "projects",     label: "Projects",     eyebrow: "Selected Work",        heading: "Projects"                    },
+    { id: "skills",       label: "Skills",       eyebrow: "Technical Proficiency", heading: "Skills",       scroll: true },
+    { id: "publications", label: "Publications", eyebrow: "Research & Writing",   heading: "Publications",  scroll: true },
+    { id: "contact",      label: "Contact",      eyebrow: "Get In Touch",         heading: "Contact Me",    scroll: true },
+  ],
+
+  profile: {
+    name: "Erfan Shafagh",
+    role: "Machine Learning Researcher",
+    location: "Burnaby, BC, Canada",
+    avatar: "assets/img/avatar.webp",
+    /** Used for the meta description and social share cards. */
+    tagline:
+      "Machine Learning Researcher and Computer Science graduate student at Simon Fraser University, working on fraud detection, weak supervision, anomaly detection, and large language models.",
+    links: [
+      { label: "esa104@sfu.ca",                 href: "mailto:esa104@sfu.ca",                       icon: "email"     },
+      { label: "linkedin.com/in/erfan-shafagh", href: "https://www.linkedin.com/in/erfan-shafagh/", icon: "linkedin"  },
+      { label: "github.com/erfanshafagh",       href: "https://github.com/erfanshafagh",            icon: "github"    },
+      { label: "instagram.com/erfan.shafagh",   href: "https://instagram.com/erfan.shafagh",        icon: "instagram" },
+      { label: "Resume",                        href: "assets/resume.pdf",                          icon: "cv"        },
+      { label: "CV",                            href: "assets/cv.pdf",                              icon: "cv"        },
+    ],
+  },
+
+  about: {
+    bio: [
+      "I'm a Machine Learning Researcher and Computer Science graduate student at Simon Fraser University, with a strong academic record and a focus on fraud detection, weak supervision, anomaly detection, and large language models.",
+      "My research spans the full cycle, from problem formulation and dataset engineering to model development, experimentation, and publication. I enjoy working at the intersection of theory and real-world application, building ML systems that are robust, interpretable, and deployable. I'm passionate about graduate research, open-source contribution, and tackling complex problems with principled data-driven approaches.",
+      "Outside the lab, I like building things just for the fun of it, especially small ideas that turn into something real. I spend time experimenting with web designs, tweaking my portfolio, or exploring random project ideas that catch my interest. I also enjoy staying up to date with new tech, particularly in AI trends.",
+      "When I'm not coding, I watch movies like Inception and Interstellar (don't ask how many times I've rewatched them), and play games like Counter-Strike (definitely not a pro). I'm usually exploring new tools (mostly just clicking around to see what happens), watching tech content (and occasionally getting distracted by memes), and trying to stay consistent with the gym (don't ask if I actually am). I also like sketching out random ideas (they rarely make sense), listening to music while coding (sometimes too loudly), and attempting to cook new recipes (results may vary). Feel free to check out my website and stay in touch! \u{1F642}",
+    ],
+    /**
+     * `value: null` derives the count from the data below, so these can never
+     * drift out of sync with what the site actually lists.
+     */
+    stats: [
+      { value: null, from: "publications", suffix: "",  label: "Publications" },
+      { value: null, from: "projects",     suffix: "",  label: "Projects"     },
+      { value: "3+",                                    label: "Years Coding" },
+      { value: "3.46",                                  label: "GPA"          },
+    ],
+  },
+
+  education: [
+    {
+      degree: "Master of Computer Science",
+      school: "Simon Fraser University",
+      website: "https://www.sfu.ca/",
+      year: "May 2026 – Present",
+      description:
+        "Graduate studies in Computer Science with a research focus on machine learning, fraud detection, weak supervision, and anomaly detection.",
+      gpa: null,
+    },
+    {
+      degree: "Bachelor of Computer Science",
+      school: "Simon Fraser University",
+      website: "https://www.sfu.ca/",
+      year: "Jan 2023 – Dec 2025",
+      description:
+        "President's Honour Roll once and Dean's Honour Roll twice. Specialized in machine learning and deep learning, with additional coursework in algorithms, databases, systems, and networking.",
+      gpa: "3.46",
+    },
+  ],
+
+  experience: [
+    {
+      title: "Research Assistant",
+      company: "SFU – TBLab",
+      website: "https://www.sfu.ca/~mat15/",
+      period: "Nov 2024 – Present",
+      location: "Burnaby, BC",
+      highlights: [
+        "Gained hands-on experience with the full research cycle, from problem formulation to experimentation and evaluation.",
+        "Conducted research in fraud detection using weak supervision and anomaly detection methods.",
+        "Applied deep learning methods to real-world, high-dimensional datasets.",
+        "Collaborated in an academic research setting, contributing to publications and interdisciplinary teamwork.",
+      ],
+    },
+    {
+      title: "Program Coordinator",
+      company: "FOSINT-SI Symposium",
+      website: "https://fosint-si.github.io/",
+      period: "Mar 2026 – Present",
+      location: "Remote",
+      highlights: [
+        "Managed paper submissions and author–reviewer communication.",
+        "Designed and maintained the conference website and media content.",
+      ],
+    },
+    {
+      title: "Python Tutor (Volunteer)",
+      company: "Simon Fraser University",
+      website: "https://www.sfu.ca/",
+      period: "Feb – Mar 2023",
+      location: "Burnaby, BC",
+      highlights: [
+        "Provided individualized guidance to an undergraduate student on Python fundamentals.",
+        "Adapted tutoring approaches to fit the student's individual learning style and pace.",
+      ],
+    },
+  ],
+
+  projects: [
+    {
+      name: "WAF Adversarial Learning",
+      tagline: "Adversarial & defensive LLMs",
+      description:
+        "Researched and implemented adversarial attack generation techniques (SQLi, XSS) using language models. Fine-tuned multiple LLMs with reinforcement learning (GRPO) to bypass Web Application Firewalls, and designed custom reward functions optimizing payload diversity and effectiveness.",
+      tags: ["LLM", "RL", "Security", "Python", "NLP"],
+      links: { live: null, github: "https://github.com/erfanshafagh/Waffle" },
+      image: "assets/img/waf.webp",
+    },
+    {
+      name: "Corridor Robot",
+      tagline: "Real-time path planning in ROS2",
+      description:
+        "Built a real-time path planning system in ROS2 for an RB1-base robot to navigate corridors while safely avoiding humans. Implemented Model Predictive Path Integral (MPPI) control and leveraged JAX-accelerated parallel computation for fast, smooth trajectory optimization.",
+      tags: ["ROS2", "Python", "Robotics", "JAX", "MPPI"],
+      links: { live: null, github: "https://github.com/erfanshafagh/mppi-ros2" },
+      image: "assets/img/corridor-robot.webp",
+    },
+    {
+      name: "Cleaning Robot Planner",
+      tagline: "MCTS-based autonomous coverage",
+      description:
+        "Implemented a Monte Carlo Tree Search path planning algorithm in ROS2 for a TurtleBot3 to autonomously clean rooms with static obstacles. Used a grid-based environment representation with dynamic cell updates and optimized the MCTS reward system for coverage, collision avoidance, and path efficiency.",
+      tags: ["ROS2", "MCTS", "Python", "Robotics"],
+      links: { live: null, github: "https://github.com/SFU-MARS/ros2_tutorial/tree/cleaner_mcts" },
+      image: "assets/img/cleaning-robot.webp",
+    },
+    {
+      name: "AI Lyric Generation",
+      tagline: "Fine-tuned GPT-2 for song lyrics",
+      description:
+        "Fine-tuned a GPT-2 transformer model to generate genre-specific (pop, rap) song lyrics. Compared parameter-efficient fine-tuning techniques including Residual Adapters and LoRA to adapt the LLM effectively. Evaluated outputs using perplexity metrics and human assessment of lyrical quality and genre relevance.",
+      tags: ["NLP", "LoRA", "Python", "Transformers"],
+      links: { live: null, github: null },
+      image: "assets/img/lyric-generation.webp",
+    },
+    {
+      name: "Urban Exploration Tools",
+      tagline: "Data-driven location services",
+      description:
+        "Built a location-based service combining Haversine-distance filtering and user preferences to find nearby amenities, an OpenRouteService-powered tour planner generating optimal walking, biking, and driving routes, and a virtual tour-guide feature that identifies landmarks along interpolated paths.",
+      tags: ["Python", "NumPy", "Pandas", "APIs"],
+      links: { live: null, github: null },
+      image: "assets/img/urban-exploration.webp",
+    },
+    {
+      name: "Cinepass",
+      tagline: "Movie reservation web app",
+      description:
+        "Collaborated in a team of six to develop a full-stack web application managing movie listings, user registrations, and seat reservations. Built secure authentication and booking flows using Spring Boot and PostgreSQL. Delivered iteratively following Agile methodology.",
+      tags: ["Java", "Spring Boot", "PostgreSQL", "Agile"],
+      links: { live: null, github: null },
+      image: "assets/img/cinepass.webp",
+    },
+    {
+      name: "Database Management System",
+      tagline: "Normalized relational DB design",
+      description:
+        "Designed and implemented a normalized relational database in SQLite with a teammate, applying ER modeling, schema creation, data population, and complex query design to efficiently manage large volumes of structured data, with a Python application layer on top.",
+      tags: ["SQLite", "SQL", "Python", "Database Design"],
+      links: { live: null, github: "https://github.com/erfanshafagh/dbDesign" },
+      image: "assets/img/dbdesign.png",
+    },
+    {
+      name: "Socket Chat Program",
+      tagline: "Multithreaded UDP chat in C",
+      description:
+        "Developed a multithreaded UDP socket chat application in C enabling two-way communication over a network. Used concurrent operation handling to ensure responsiveness and reliable message delivery across users.",
+      tags: ["C", "UDP", "Networking", "Multithreading"],
+      links: { live: null, github: "https://github.com/erfanshafagh/s-talk" },
+      image: "assets/img/socket-chat.webp",
+    },
+    {
+      name: "Spotify API Integration",
+      tagline: "Automated playlist population",
+      description:
+        "Developed a Python script to process audio files, extract metadata across multiple formats (MP3, FLAC, M4A), and automatically search and add matching tracks to a Spotify playlist via the Spotify Web API.",
+      tags: ["Python", "Spotify API", "Automation"],
+      links: { live: null, github: "https://github.com/erfanshafagh/SpotifyAPI" },
+      image: "assets/img/spotify-api.webp",
+    },
+  ],
+
+  /**
+   * `hue` is a plain HSL hue (0-360). Each theme derives its own saturation and
+   * lightness from it in styles/sections.css, so category colours stay legible
+   * in both themes instead of being fixed hexes that go dark-on-dark.
+   */
+  skills: [
+    { category: "Languages",              hue: 210, items: ["Python", "C++", "C", "Java"] },
+    { category: "Learning Paradigms",     hue: 295, items: ["Supervised Learning", "Unsupervised Learning", "Semi-supervised Learning", "Self-supervised Learning", "Reinforcement Learning"] },
+    { category: "Domains",                hue:  32, items: ["Fraud Detection", "Anomaly Detection", "Computer Vision", "Natural Language Processing"] },
+    { category: "Frameworks & Libraries", hue: 183, items: ["PyTorch", "Scikit-learn", "NumPy", "Pandas", "Matplotlib", "Hugging Face", "ROS2", "Spring Boot"] },
+    { category: "Databases",              hue: 135, items: ["SQL", "PostgreSQL", "SQLite"] },
+    { category: "Developer Tools",        hue:   5, items: ["Linux", "Git", "GitHub", "Docker", "VS Code", "Jupyter Notebooks"] },
+    { category: "Fundamentals",           hue:  50, items: ["Data Structures and Algorithms", "Object-Oriented Programming", "Database Design"] },
+    { category: "Soft Skills",            hue:  96, items: ["Team Collaboration", "Clear Communication", "Agile Methodology", "Problem-Solving"] },
+  ],
+
+  publications: [
+    {
+      title: "CleverCatch: A Knowledge-Guided Weak Supervision Model for Fraud Detection",
+      venue: "IEEE International Conference on Big Data · 2025",
+      venueLink: "https://conferences.cis.um.edu.mo/ieeebigdata2025/",
+      authors: ["A. Mozafari", "K. Hashemi", "E. Shafagh", "S. Motamedi", "A. Taheri", "M. A. Tayebi"],
+      highlightAuthor: "E. Shafagh",
+      abstract:
+        "Healthcare fraud detection is challenging due to scarce labels, evolving fraud patterns, and complex medical data. We propose CleverCatch, a knowledge-guided weak supervision model that integrates domain expertise with neural learning to detect fraudulent prescription behavior. By aligning expert rules and data in a shared embedding space and training on synthetic compliance and violation cases, the model learns patterns that generalize to real-world data. Experiments show improved performance over state-of-the-art methods, with gains in AUC and recall, while also enhancing interpretability.",
+      links: { pdf: null, doi: "https://arxiv.org/abs/2510.13205" },
+      citations: null,
+      tags: ["Fraud Detection", "Weak Supervision", "ML/DL"],
+    },
+  ],
+
+  contact: {
+    /** Set false to drop the Contact tab entirely. */
+    display: true,
+    /** Set true to show the contact form. It has no backend -- wire one up first. */
+    form: false,
+    intro:
+      "Interested in research collaboration, graduate opportunities, or just want to talk ML? Feel free to reach out. I'm always happy to connect.",
+    email: "esa104@sfu.ca",
+    availability: "Open to research collaborations & grad opportunities",
+    responseTime: "I usually reply within 48 hours",
+    socials: [
+      { label: "LinkedIn",  href: "https://www.linkedin.com/in/erfan-shafagh/", icon: "linkedin"  },
+      { label: "GitHub",    href: "https://github.com/erfanshafagh",            icon: "github"    },
+      { label: "Instagram", href: "https://instagram.com/erfan.shafagh",        icon: "instagram" },
+    ],
+  },
+};

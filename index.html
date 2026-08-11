@@ -1,40 +1,199 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Erfan Shafagh — Portfolio</title>
-    <link rel="icon" id="favicon" type="image/png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <title>Erfan Shafagh — Machine Learning Researcher</title>
+    <meta
+      name="description"
+      content="Erfan Shafagh — Machine Learning Researcher and Computer Science graduate student at Simon Fraser University, working on fraud detection, weak supervision, anomaly detection, and large language models."
+    />
+    <meta name="author" content="Erfan Shafagh" />
+    <link rel="canonical" href="https://erfanshafagh.github.io/" />
+    <meta name="robots" content="index, follow" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#dcdcdc" media="(prefers-color-scheme: light)" />
+
+    <!-- Link previews (LinkedIn, X, Slack, Discord, iMessage) -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content="Erfan Shafagh" />
+    <meta property="og:title" content="Erfan Shafagh — Machine Learning Researcher" />
+    <meta
+      property="og:description"
+      content="Machine Learning Researcher and CS graduate student at Simon Fraser University. Research in fraud detection, weak supervision, anomaly detection, and LLMs."
+    />
+    <meta property="og:url" content="https://erfanshafagh.github.io/" />
+    <meta property="og:image" content="https://erfanshafagh.github.io/assets/img/og-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Erfan Shafagh — Machine Learning Researcher" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="profile:first_name" content="Erfan" />
+    <meta property="profile:last_name" content="Shafagh" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Erfan Shafagh — Machine Learning Researcher" />
+    <meta
+      name="twitter:description"
+      content="Machine Learning Researcher and CS graduate student at Simon Fraser University. Research in fraud detection, weak supervision, anomaly detection, and LLMs."
+    />
+    <meta name="twitter:image" content="https://erfanshafagh.github.io/assets/img/og-card.png" />
+
+    <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,300&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
-    <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="layout">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap"
+      rel="stylesheet"
+    />
 
-      <!-- ══ LEFT SIDEBAR ══ -->
+    <link rel="stylesheet" href="styles/tokens.css" />
+    <link rel="stylesheet" href="styles/base.css" />
+    <link rel="stylesheet" href="styles/layout.css" />
+    <link rel="stylesheet" href="styles/components.css" />
+    <link rel="stylesheet" href="styles/sections.css" />
+    <link rel="stylesheet" href="styles/responsive.css" />
+
+    <!-- Applies the saved/OS theme before first paint so light-theme
+         visitors never see a flash of the dark palette. -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("theme");
+          if (t !== "light" && t !== "dark") {
+            t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+          }
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Erfan Shafagh",
+        "url": "https://erfanshafagh.github.io/",
+        "image": "https://erfanshafagh.github.io/assets/img/avatar.webp",
+        "jobTitle": "Machine Learning Researcher",
+        "email": "mailto:esa104@sfu.ca",
+        "description": "Machine Learning Researcher and Computer Science graduate student at Simon Fraser University, working on fraud detection, weak supervision, anomaly detection, and large language models.",
+        "affiliation": { "@type": "CollegeOrUniversity", "name": "Simon Fraser University", "url": "https://www.sfu.ca/" },
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "Simon Fraser University", "url": "https://www.sfu.ca/" },
+        "address": { "@type": "PostalAddress", "addressLocality": "Burnaby", "addressRegion": "BC", "addressCountry": "CA" },
+        "knowsAbout": ["Fraud Detection", "Weak Supervision", "Anomaly Detection", "Large Language Models", "Machine Learning"],
+        "sameAs": [
+          "https://www.linkedin.com/in/erfan-shafagh/",
+          "https://github.com/erfanshafagh",
+          "https://instagram.com/erfan.shafagh"
+        ]
+      }
+    </script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#panelContainer">Skip to content</a>
+
+    <div class="layout">
       <aside class="sidebar">
         <div class="sidebar-inner">
           <div class="avatar-ring">
-            <img id="avatarImg" class="avatar" src="" alt="Profile" />
+            <img
+              id="avatarImg"
+              class="avatar"
+              src="assets/img/avatar.webp"
+              alt="Erfan Shafagh, Machine Learning Researcher"
+              width="132"
+              height="132"
+              fetchpriority="high"
+            />
           </div>
-          <h1 class="profile-name" id="profileName"></h1>
-          <p  class="profile-role" id="profileRole"></p>
-          <div class="divider"></div>
-          <nav class="profile-links" id="profileLinks"></nav>
+          <h1 class="profile-name" id="profileName">Erfan Shafagh</h1>
+          <p class="profile-role" id="profileRole">Machine Learning Researcher</p>
+          <nav class="profile-links" id="profileLinks" aria-label="Profile links"></nav>
         </div>
       </aside>
 
-      <!-- ══ RIGHT MAIN ══ -->
       <main class="main-content">
-        <nav class="tab-nav" id="tabNav" role="tablist"></nav>
-        <div class="panel-container" id="panelContainer"></div>
-      </main>
+        <nav class="tab-bar" aria-label="Sections">
+          <div class="tab-list" id="tabList" role="tablist" aria-label="Portfolio sections"></div>
+          <span class="nav-separator" aria-hidden="true"></span>
+          <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme"></button>
+        </nav>
 
+        <div class="panel-container" id="panelContainer">
+          <!-- prerender:start -->
+          <!-- Generated by `node build.js` from src/data.js. Gives crawlers and
+               link-preview bots real text, since they do not run JavaScript.
+               Replaced by the live render as soon as the module loads. -->
+        <section class="panel" id="prerender-about">
+          <h2>About</h2>
+          <p>I&#39;m a Machine Learning Researcher and Computer Science graduate student at Simon Fraser University, with a strong academic record and a focus on fraud detection, weak supervision, anomaly detection, and large language models.</p>
+          <p>My research spans the full cycle, from problem formulation and dataset engineering to model development, experimentation, and publication. I enjoy working at the intersection of theory and real-world application, building ML systems that are robust, interpretable, and deployable. I&#39;m passionate about graduate research, open-source contribution, and tackling complex problems with principled data-driven approaches.</p>
+          <p>Outside the lab, I like building things just for the fun of it, especially small ideas that turn into something real. I spend time experimenting with web designs, tweaking my portfolio, or exploring random project ideas that catch my interest. I also enjoy staying up to date with new tech, particularly in AI trends.</p>
+          <p>When I&#39;m not coding, I watch movies like Inception and Interstellar (don&#39;t ask how many times I&#39;ve rewatched them), and play games like Counter-Strike (definitely not a pro). I&#39;m usually exploring new tools (mostly just clicking around to see what happens), watching tech content (and occasionally getting distracted by memes), and trying to stay consistent with the gym (don&#39;t ask if I actually am). I also like sketching out random ideas (they rarely make sense), listening to music while coding (sometimes too loudly), and attempting to cook new recipes (results may vary). Feel free to check out my website and stay in touch! 🙂</p>
+        </section>
+
+        <section class="panel" id="prerender-education">
+          <h2>Education</h2>
+          <p><strong>Master of Computer Science</strong>, Simon Fraser University (May 2026 – Present). Graduate studies in Computer Science with a research focus on machine learning, fraud detection, weak supervision, and anomaly detection.</p>
+          <p><strong>Bachelor of Computer Science</strong>, Simon Fraser University (Jan 2023 – Dec 2025). President&#39;s Honour Roll once and Dean&#39;s Honour Roll twice. Specialized in machine learning and deep learning, with additional coursework in algorithms, databases, systems, and networking.</p>
+        </section>
+
+        <section class="panel" id="prerender-experience">
+          <h2>Experience</h2>
+          <p><strong>Research Assistant</strong>, SFU – TBLab (Nov 2024 – Present).</p>
+          <ul><li>Gained hands-on experience with the full research cycle, from problem formulation to experimentation and evaluation.</li><li>Conducted research in fraud detection using weak supervision and anomaly detection methods.</li><li>Applied deep learning methods to real-world, high-dimensional datasets.</li><li>Collaborated in an academic research setting, contributing to publications and interdisciplinary teamwork.</li></ul>
+          <p><strong>Program Coordinator</strong>, FOSINT-SI Symposium (Mar 2026 – Present).</p>
+          <ul><li>Managed paper submissions and author–reviewer communication.</li><li>Designed and maintained the conference website and media content.</li></ul>
+          <p><strong>Python Tutor (Volunteer)</strong>, Simon Fraser University (Feb – Mar 2023).</p>
+          <ul><li>Provided individualized guidance to an undergraduate student on Python fundamentals.</li><li>Adapted tutoring approaches to fit the student&#39;s individual learning style and pace.</li></ul>
+        </section>
+
+        <section class="panel" id="prerender-projects">
+          <h2>Projects</h2>
+          <p><strong><a href="https://github.com/erfanshafagh/Waffle">WAF Adversarial Learning</a></strong> — Adversarial &amp; defensive LLMs. Researched and implemented adversarial attack generation techniques (SQLi, XSS) using language models. Fine-tuned multiple LLMs with reinforcement learning (GRPO) to bypass Web Application Firewalls, and designed custom reward functions optimizing payload diversity and effectiveness. Tags: LLM, RL, Security, Python, NLP.</p>
+          <p><strong><a href="https://github.com/erfanshafagh/mppi-ros2">Corridor Robot</a></strong> — Real-time path planning in ROS2. Built a real-time path planning system in ROS2 for an RB1-base robot to navigate corridors while safely avoiding humans. Implemented Model Predictive Path Integral (MPPI) control and leveraged JAX-accelerated parallel computation for fast, smooth trajectory optimization. Tags: ROS2, Python, Robotics, JAX, MPPI.</p>
+          <p><strong><a href="https://github.com/SFU-MARS/ros2_tutorial/tree/cleaner_mcts">Cleaning Robot Planner</a></strong> — MCTS-based autonomous coverage. Implemented a Monte Carlo Tree Search path planning algorithm in ROS2 for a TurtleBot3 to autonomously clean rooms with static obstacles. Used a grid-based environment representation with dynamic cell updates and optimized the MCTS reward system for coverage, collision avoidance, and path efficiency. Tags: ROS2, MCTS, Python, Robotics.</p>
+          <p><strong>AI Lyric Generation</strong> — Fine-tuned GPT-2 for song lyrics. Fine-tuned a GPT-2 transformer model to generate genre-specific (pop, rap) song lyrics. Compared parameter-efficient fine-tuning techniques including Residual Adapters and LoRA to adapt the LLM effectively. Evaluated outputs using perplexity metrics and human assessment of lyrical quality and genre relevance. Tags: NLP, LoRA, Python, Transformers.</p>
+          <p><strong>Urban Exploration Tools</strong> — Data-driven location services. Built a location-based service combining Haversine-distance filtering and user preferences to find nearby amenities, an OpenRouteService-powered tour planner generating optimal walking, biking, and driving routes, and a virtual tour-guide feature that identifies landmarks along interpolated paths. Tags: Python, NumPy, Pandas, APIs.</p>
+          <p><strong>Cinepass</strong> — Movie reservation web app. Collaborated in a team of six to develop a full-stack web application managing movie listings, user registrations, and seat reservations. Built secure authentication and booking flows using Spring Boot and PostgreSQL. Delivered iteratively following Agile methodology. Tags: Java, Spring Boot, PostgreSQL, Agile.</p>
+          <p><strong><a href="https://github.com/erfanshafagh/dbDesign">Database Management System</a></strong> — Normalized relational DB design. Designed and implemented a normalized relational database in SQLite with a teammate, applying ER modeling, schema creation, data population, and complex query design to efficiently manage large volumes of structured data, with a Python application layer on top. Tags: SQLite, SQL, Python, Database Design.</p>
+          <p><strong><a href="https://github.com/erfanshafagh/s-talk">Socket Chat Program</a></strong> — Multithreaded UDP chat in C. Developed a multithreaded UDP socket chat application in C enabling two-way communication over a network. Used concurrent operation handling to ensure responsiveness and reliable message delivery across users. Tags: C, UDP, Networking, Multithreading.</p>
+          <p><strong><a href="https://github.com/erfanshafagh/SpotifyAPI">Spotify API Integration</a></strong> — Automated playlist population. Developed a Python script to process audio files, extract metadata across multiple formats (MP3, FLAC, M4A), and automatically search and add matching tracks to a Spotify playlist via the Spotify Web API. Tags: Python, Spotify API, Automation.</p>
+        </section>
+
+        <section class="panel" id="prerender-skills">
+          <h2>Skills</h2>
+          <p><strong>Languages:</strong> Python, C++, C, Java</p>
+          <p><strong>Learning Paradigms:</strong> Supervised Learning, Unsupervised Learning, Semi-supervised Learning, Self-supervised Learning, Reinforcement Learning</p>
+          <p><strong>Domains:</strong> Fraud Detection, Anomaly Detection, Computer Vision, Natural Language Processing</p>
+          <p><strong>Frameworks &amp; Libraries:</strong> PyTorch, Scikit-learn, NumPy, Pandas, Matplotlib, Hugging Face, ROS2, Spring Boot</p>
+          <p><strong>Databases:</strong> SQL, PostgreSQL, SQLite</p>
+          <p><strong>Developer Tools:</strong> Linux, Git, GitHub, Docker, VS Code, Jupyter Notebooks</p>
+          <p><strong>Fundamentals:</strong> Data Structures and Algorithms, Object-Oriented Programming, Database Design</p>
+          <p><strong>Soft Skills:</strong> Team Collaboration, Clear Communication, Agile Methodology, Problem-Solving</p>
+        </section>
+
+        <section class="panel" id="prerender-publications">
+          <h2>Publications</h2>
+          <p><strong><a href="https://arxiv.org/abs/2510.13205">CleverCatch: A Knowledge-Guided Weak Supervision Model for Fraud Detection</a></strong>. A. Mozafari, K. Hashemi, E. Shafagh, S. Motamedi, A. Taheri, M. A. Tayebi. IEEE International Conference on Big Data · 2025.</p>
+          <p>Healthcare fraud detection is challenging due to scarce labels, evolving fraud patterns, and complex medical data. We propose CleverCatch, a knowledge-guided weak supervision model that integrates domain expertise with neural learning to detect fraudulent prescription behavior. By aligning expert rules and data in a shared embedding space and training on synthetic compliance and violation cases, the model learns patterns that generalize to real-world data. Experiments show improved performance over state-of-the-art methods, with gains in AUC and recall, while also enhancing interpretability.</p>
+        </section>
+
+        <section class="panel" id="prerender-contact">
+          <h2>Contact</h2>
+          <p>Interested in research collaboration, graduate opportunities, or just want to talk ML? Feel free to reach out. I&#39;m always happy to connect.</p>
+          <p>Email: <a href="mailto:esa104@sfu.ca">esa104@sfu.ca</a></p>
+        </section>
+          <!-- prerender:end -->
+        </div>
+      </main>
     </div>
-    <script src="data.js"></script>
-    <script src="script.js"></script>
+
+    <script type="module" src="src/main.js"></script>
   </body>
 </html>

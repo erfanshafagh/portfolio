@@ -1,0 +1,107 @@
+/* ═══════════════════════════════════════════════════════════════
+   DESIGN TOKENS
+   Every colour, size and timing the rest of the CSS is allowed to
+   use. Both themes define the same set of names, so no component
+   has to know which theme is active.
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "DM Sans", system-ui, -apple-system, sans-serif;
+
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 22px;
+  --r-pill: 999px;
+
+  /* Fluid so the main column keeps usable width on small laptops and
+     tablets instead of the nav being squeezed into ellipses. */
+  --sidebar-w: clamp(232px, 24vw, 300px);
+  --gap: 18px;
+  --pad: 20px;
+
+  /* Minimum comfortable touch target (WCAG 2.5.5 / platform guidance). */
+  --tap: 44px;
+
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --fast: 130ms;
+  --base: 260ms;
+  --slow: 420ms;
+
+  /* Category accent derived per theme from a hue in data.js, so skill
+     colours stay legible rather than being fixed dark-on-dark hexes. */
+  --cat-sat: 45%;
+  --cat-light: 66%;
+}
+
+/* ── DARK ─────────────────────────────────────────────────────── */
+[data-theme="dark"] {
+  --bg-page: #1a1a1a;
+  --bg-card: #222222;
+  --bg-card-alt: #2a2a2a;
+  --bg-hover: #303030;
+  --bg-tag: #282828;
+
+  --text-1: #ffffff;
+  --text-2: #d9d9d9;
+  --text-3: #949494; /* was #808080 — failed WCAG AA on every card background */
+  --text-4: #959595;
+
+  --border: rgba(255, 255, 255, 0.09);
+  --border-hi: rgba(255, 255, 255, 0.16);
+
+  --accent: #3c6e71;
+  --accent-rgb: 60, 110, 113;
+  --accent2: #5a9ea3;
+  --accent2-rgb: 90, 158, 163;
+
+  --focus: #7fc6cb;
+
+  --shadow-card: 0 4px 32px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  --shadow-nav: 0 4px 24px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.06);
+
+  --glass-bg: rgba(22, 22, 22, 0.78);
+  --glass-bdr: rgba(255, 255, 255, 0.08);
+
+  --scroll-thumb: rgba(255, 255, 255, 0.22);
+  --scroll-hi: rgba(255, 255, 255, 0.38);
+
+  --cat-sat: 45%;
+  --cat-light: 66%;
+}
+
+/* ── LIGHT ────────────────────────────────────────────────────── */
+[data-theme="light"] {
+  --bg-page: #dcdcdc;
+  --bg-card: #ffffff;
+  --bg-card-alt: #f4f4f4;
+  --bg-hover: #ebebeb;
+  --bg-tag: #e6e6e6;
+
+  --text-1: #353535;
+  --text-2: #5a5a5a;
+  --text-3: #666666; /* was #a0a0a0 — as low as 2.1:1, roughly half the AA floor */
+  --text-4: #666666; /* was missing entirely, so date pills silently inherited --text-1 */
+
+  --border: rgba(0, 0, 0, 0.1);
+  --border-hi: rgba(0, 0, 0, 0.18);
+
+  --accent: #284b63;
+  --accent-rgb: 40, 75, 99;
+  --accent2: #3c6e71;
+  --accent2-rgb: 60, 110, 113;
+
+  --focus: #1c4b52;
+
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.07), 0 0 0 1px rgba(0, 0, 0, 0.07);
+  --shadow-nav: 0 4px 18px rgba(0, 0, 0, 0.07), 0 0 0 1px rgba(0, 0, 0, 0.07);
+
+  --glass-bg: rgba(248, 248, 248, 0.82);
+  --glass-bdr: rgba(0, 0, 0, 0.09);
+
+  --scroll-thumb: rgba(0, 0, 0, 0.26);
+  --scroll-hi: rgba(0, 0, 0, 0.42);
+
+  --cat-sat: 52%;
+  --cat-light: 30%;
+}
